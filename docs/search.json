@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Stat 301 Notes",
     "section": "",
-    "text": "Course Goals for STAT 301\nSTAT 301 is an introduction to sampling. By the end of the course, you will:\n\nLearn the basic methodology of how classical survey samples are conducted based on simple random sampling.\nRecognize sampling and non-sampling errors.\nBe able to use extra information in sampling via ratio estimators and regression estimators.\nBe able to define and use stratified samples and know why they are often better than SRS.\nBe able to design one and two stage cluster samples and know their key properties.\nRecognize strengths and weaknesses of different sampling approaches.\nUse standard R packages to analyze survey data and estimate population means, proportions, totals, and more.",
+    "text": "Course Goals for STAT 301\nSTAT 301 is an introduction to the theory underlying statistical inference. By the end of the course, you will:\n\nUnderstand different methods of obtaining point estimates, including maximum likelihood, method of moments, and Bayesian estimation\nUnderstand that some estimators are better than others, and be able to evaluate estimators\nUnderstand the theory underlying hypothesis tests, including errors, power, size, and level of tests\nBe able to derive hypothesis tests for simple situations from first principles, including likelihood ratio tests and most powerful tests\nBe able to derive interval estimates by inverting tests and using pivotal quantities",
     "crumbs": [
       "Course Goals for STAT 301"
     ]
