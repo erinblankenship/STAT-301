@@ -204,6 +204,11 @@ We'll derive the theoretical distribution of a min and max through our uniform d
 \
 \
 \
+\
+\
+\
+\
+
 
 
 - Find the pdf of $X_{(n)}$
@@ -248,6 +253,11 @@ plot(x,y,type='l')
 
 - Find the CDF of $X_{(1)}$
 
+\
+\
+\
+\
+\
 \
 \
 \
