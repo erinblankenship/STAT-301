@@ -1,0 +1,667 @@
+# Methods of Estimation
+
+All of STAT 262, and last week, we were concerned with concepts of probability and random variables. We used them to build models of nondeterministic (i.e., random) phenomena. We focused on distributions of random variables, including function of random variables such as the sample mean. These distributions were sometimes used to determine the likelihood of a particular event or the expected value/variance of the random variable. In each of these instances, we assumed that we knew the correct probability model. Most often, however, we are interested in a numeric characteristic of a random phenomenon that cannot be computed/observed directly. For example, we might be interested in knowing
+
+- the percent of people in Nebraska who buy organic food
+- the effect of a teacher professional development program on student achievement
+- the average change in blood sugar with a new diabetes drug
+- the relationship between time spent playing video games and aggressive behavior
+- the relationship between self-selected seating in a classroom and class performance
+
+As we saw in classes like STAT 102 and STAT 212 (and STAT 414!), we typically do not know the true population parameter(s), like mean lifelength of patients on a particular treatment. Instead, we observe one or more random variables whose distributions depend on the parameter of interest. Then, we use statistical inference methods to analyze the observed values to gain knowledge about the unknown characteristic and/or make decisions based on the unknown characteristic. The rest of the semester we will be focusing on developing these statistical inference methods. In earlier classes we *used* these methods (under some very specific assumptions), in STAT 301 we see where these methods come from.
+
+::: callout-tip
+# Definition: Statistical inference
+
+**Statistical Inference** refers generally to the methods by which one makes inferences or generalizations about a population and its parameters based on statistics calculated from sample data. These methods can be classified broadly into three forms:
+
+- **Point estimation** is the process by which an estimator of an unknown parameter, or function of parameters, is chosen and evaluated.
+
+- **Interval estimation** is the process by which an observed value of a statistic and the statistic's probability distribution are used to create a range of plausible values of an unknown parameter, or function of parameters.
+
+- **Hypothesis testing** is the process by which an observed value of a statistic and the statistic's probability distribution are used to evaluate the plausibility of a statement made about the unknown value of a parameter.
+:::
+
+## Point Estimation: Introduction
+
+The basic situation is point estimation is as follows:
+
+- We want to estimate an unknown population parameter $\theta$ (e.g., $\mu$ or $\lambda$; possibly vector-valued) or some function of parameters.\
+
+- We find an **estimator**, i.e., a function of the random variables $X_1,\dots, X_n$: $T=W(X_1,\dots, X_n)$ (e.g., $\bar X$ or $S^2$).\
+
+- We observe random variables $X_1,\dots, X_n$ (not necessarily iid), where the distribution of $X_1,\dots, X_n$ depends on the unknown parameter $\theta$.\
+
+- We calculate an **estimate**, i.e., a function of the realized (observed) values $x_1,\dots, x_n$: $t=W(x_1,\dots, x_n)$ (e.g., $\bar x$ or $s^2$).\
+
+**Notation**: $\hat \theta$ or $\tilde \theta$ is often used in place of $T$ to distinguish between the unknown parameter and its estimator.
+
+**Example**: The Federal Aviation Administration (FAA) is interested in answering the following research question:
+
+*Is American Eagle airline more consistent when arriving in Fort Wayne, Texas than Mesa airline?*
+
+To answer this research question, the FAA randomly sampled ten *American Eagle* airline and ten *Mesa* airline flights arriving in Fort Wayne, Texas and recorded each flight's arrival delay time (in minutes). The arrival delay times for the sampled flights, in rank order, are:
+
+**AMERICAN EAGLE**: -15 \hspace{3mm} -13 \hspace{3mm} -11 \hspace{3mm} -10 \hspace{3mm} -10 \hspace{3mm} -4 \hspace{3mm} 7 \hspace{3mm} 37 \hspace{3mm} 88 \hspace{3mm} 142
+
+**MESA**: -22 \hspace{3mm} -14 \hspace{3mm} -2 \hspace{3mm} 0 \hspace{3mm} 0 \hspace{3mm} 15 \hspace{3mm} 18 \hspace{3mm} 97 \hspace{3mm} 146 \hspace{3mm} 173
+
+- What are the population parameters of interest?
+
+\
+\
+
+\newpage
+
+- Identify the two random samples. What does each random variable in the random samples represent?
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+- Identify at least three estimators you could use to answer the research question. What would be the corresponding estimates of the parameters?
+
+\
+\
+\
+\
+\
+\
+
+- If each group was to take its own samples (instead of the ones conveniently supplied above by the FAA), would you expect to get the same estimates? Why or why not?
+
+\
+\
+\
+\
+
+- Even though we are working with the same sample data, we can get completely different estimates depending on which estimator we choose to use. Which estimator is better? How would you decide?
+
+\
+\
+\
+\
+\
+
+During our discussion of point estimation, we are going to focus on two main topics:
+
+1.  Methods of **finding estimators**, in particular Method of Moments Estimators (MMEs), Maximum Likelihood Estimators (MLEs), and Bayesian Estimators
+2.  Methods of **evaluating the "goodness" of statistical estimators**.
+
+## Method of Moments Estimation (MME)
+
+The method of moments is one of the oldest methods for deriving point estimators and is due to Karl Pearson, who founded the first university statistics department at University College London. Pearson died in 1936, and during his lifetime he made many contributions to statistics, including $R^2$ and the $\chi^2$ test. He was the protégé of Sir Francis Galton, cousin of Charles Darwin and the inventor of the correlation coefficient, $R$. In general, Pearson's method of moments generates possibly good estimators, though they can often be improved. The basic idea is that sample moments are good estimators of population moments when $X_1,\dots, X_n$ are iid. That is, $\bar X$ is a good estimator of E$(X)$.
+
+::: callout-tip
+# Method of Moments
+
+Let $X_1,\dots, X_n$ be iid with common pdf (or pmf) $f(x;\underline{\theta})$ where $\underline{\theta} = \left ( \begin{array}{c} \theta_1 \\ \vdots \\ \theta_k \end{array}\right)$, where $k$ is the number of parameters to be estimated.
+
+\
+
+For $j=1,\dots, k$, the $\boldsymbol{j}\mathbf{^{\hbox{th}}}$ **sample moment** is\
+\
+\
+\
+\
+\
+\
+
+and the $\boldsymbol{j}\mathbf{^{\hbox{th}}}$ **population moment** is\
+\
+\
+\
+\
+\
+\
+\
+Because E$(M_j) = \mu_j = \mu_j(\theta_1,\dots, \theta_k)$, a **method of moments estimator (MME)** of $\underline{\theta} = (\theta_1,\cdots,\theta_k)'$ is \begin{eqnarray*}
+\tilde {\underline{\theta}} = \left ( \tilde \theta_1, \cdots, \tilde \theta_k \right )', \hbox{\hspace{3mm} where \hspace{3mm}} M_1 &=& \mu_1(\tilde \theta_1,\dots, \tilde \theta_k)
+ \hbox{\hspace{70mm}}\\
+ M_2 &=& \mu_2 (\tilde \theta_1,\dots, \tilde \theta_k) \\
+&\vdots& \\
+M_k &=& \mu_k (\tilde \theta_1,\dots, \tilde \theta_k)
+\end{eqnarray*}\
+:::
+
+**Example**: Let $X_1,\dots, X_n \overset{iid}{\sim}$ N$(\mu,\sigma^2)$. Find a MME of $\underline{\theta} = \left(\begin{array}{c} \mu \\ \sigma^2 \end{array}\right)$. How do we start?
+
+- Find the first $k=2$ sample moments (why 2?).
+
+\
+\
+\
+\
+\
+\
+
+- Find the first $k=2$ population moments.
+
+\
+\
+\
+\
+\
+\
+
+- Set the respective sample and population moments equal to each other and solve for $\tilde{\underline{\theta}}$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n \overset{iid}{\sim}$ Gamma$(\alpha,\beta)$. Find a MME of $\underline{\theta} = \left(\begin{array}{c} \alpha \\ \beta \end{array}\right)$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example (cont.)**: The lifetime in months of an electrical fuse is known to follow a gamma distribution with parameters $\alpha$ and $\beta$. The manufacturer wants to estimate the mean lifetime of that brand of electrical fuse. In a random sample of ten electrical fuses, the following lifetimes were observed: 3, 5, 8, 8, 4, 6, 4, 11, 6, 5. What is a method of moments estimate of the population mean?
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+**Common Misconceptions about MMEs**:
+
+- Transformation of Data:
+
+  The method of moments estimator (MME) is **NOT** invariant to transformation of the data. For example, if $X_1,\dots, X_n \overset{iid}{\sim}$ N$(\mu,\sigma^2)$, but we observe $Y_1,\dots, Y_n$ where $Y_i = e^{X_i}$, $i=1,\dots, n$, then a MME of $\underline{\theta} = \left (\begin{array}{c} \mu \\ \sigma^2 \end{array}\right)$ is not the same as the estimator we found earlier based on $X_1,\dots, X_n$.
+
+- Matching the First Moments:
+
+  The first sample and population moments are **NOT** always the moments that will be matched, even if the distribution has only one unknown parameter. For example, the Laplace distribution, with pdf $$f_X(x;\beta) = \frac{1}{2\beta} e^{-|x|/\beta} \hspace{10mm} -\infty < x < \infty, \hspace{3mm} \beta > 0,$$ has E$(X) = 0$. So, if $X_1,\dots, X_n$ is a random sample from the Laplace distribution, setting the first population moment, $\mu_1=0$, equal to the first sample moment, $M_1=\bar X$, does not yield an estimate of the unknown parameter $\beta$. However, $\mu_2 = \hbox{E}(X^2) = 2\beta^2$, so we can use the second sample moment to get a MME.
+
+## Maximum Likelihood Estimation (MLE)
+
+Maximum likelihood estimation is another method used to find point estimators. It was named and popularized by Sir R. A. Fisher in the early 1920s. The basic idea is that, given the sample data, choose as the estimator (e.g., $\hat N$) of the parameter (e.g., $N$) the value that makes the observed sample result the most "likely," i.e., maximize the "likelihood."
+
+::: callout-tip
+# Maximum Likelihood
+
+Consider $\underline{X} = \mathbf{X} = (X_1,\dots, X_n)$ which has joint pdf (or pmf) $f(\underline{x};\underline{\theta}) = f(\mathbf{x}; \underline{\theta}) = f(x_1,\dots,x_n; \underline{\theta})$. This joint density is considered as a function of $\mathbf{x}$ for fixed $\underline{\theta}=(\theta_1,\dots, \theta_k)'$, where $k$ is the number of parameters.
+
+- The **likelihood function** (or **likelihood**) of the data is $L(\underline{\theta}|\mathbf{x}) =$
+
+  The likelihood is viewed as a function of $\underline{\theta}$ for fixed $\mathbf{x}$.\
+
+- The **maximum likelihood estimator** (MLE) of $\underline{\theta}$, $\hat{\underline{\theta}}_{\hbox{\tiny{MLE}}}$, maximizes the likelihood function $L(\underline{\theta}|\mathbf{x})$. That is,
+
+\
+\
+\
+
+$\hspace{8mm}$ for all $\underline{\theta} \in \underline{\Theta}$ (parameter space).
+
+- **IF** (big if) $L(\underline{\theta}|\mathbf{x})$ is differentiable and assumes a maximum on $\underline{\Theta}$, the MLE will be a solution of the equations $$\frac{\partial}{\partial \theta_i} L(\boldsymbol{\theta}|\mathbf{x}) = 0, \hbox{ for } i=1,\dots, k.$$
+
+$\hspace{8mm}$ If one or more solutions exist, then it should be verified which, if any, maximize $L(\underline{\theta}|\mathbf{x})$. (If a
+
+$\hspace{8mm}$ solution is a maximum, the second derivative evaluated at the solution should be $< 0$.)\
+
+*Note*: Sometimes (usually!) it is difficult to work with the likelihood function, so we work with the log-likelihood function instead. This is because any value of $\underline{\theta}$ that maximizes the likelihood, $L(\underline{\theta}|\mathbf{x})$, also maximizes the **log-likelihood**, $\ln L(\underline{\theta}|\mathbf{x})$, because the natural log function is strictly increasing on $(0,\infty)$. In other words,
+
+\
+\
+\
+
+So, for computational convenience, the usual form of the maximum likelihood equation is $$\frac{\partial}{\partial \theta_i} \ln L(\boldsymbol{\theta}|\mathbf{x}) = 0, \hbox{ for } i=1,\dots,k$$.
+:::
+
+**Example**: Geologists want to estimate the average magnitude of earthquakes in a region in North America. Let $X_1,\dots, X_n$ be a random sample of earthquake magnitudes recorded for that region. Assume $X_i \sim$ Exp($\lambda$), where $\lambda$ is unknown. Five data points were observed: 2.2, 1.7, 3.3, 0.7 and 1.9. Find the ML estimator and estimate for $\lambda$.
+
+Where do we start?
+
+- Find the likelihood function, $L(\underline{\theta}|\mathbf{x})$.
+
+\
+\
+\
+\
+\
+
+**IF** $L(\underline{\theta}|\mathbf{x})$ is differentiable and assumes a maximum on the parameter space, then . . .
+
+- Find the log-likelihood function, $\ln L(\underline{\theta}|\mathbf{x})$.
+
+\
+\
+\
+\
+
+- Find the partial derivative of the log-likelihood function with respect to each of the parameters.
+
+\
+\
+\
+\
+
+- Set the partial derivative(s) equal to zero, and solve to find $\hat{\underline{\theta}}_{\hbox{\tiny{MLE}}}$.
+
+\
+\
+\
+\
+\
+\
+
+- Use the data to obtain the maximum likelihood estimate of $\underline{\theta}$.
+
+\newpage
+
+**Example**: A telemarketing firm is interested in estimating the probability of a sale, $p$. Let $X_i =$ the number of phone calls in a day until 3 sales are made. Assume $X_1,\dots, X_n \overset{iid}{\sim}$ NegBin$(3,p)$, $0 \leq p \leq 1$, where $p$ is unknown. Four data points were observed: 15, 20, 10, 22. Find $\hat p_{\hbox{\tiny{MLE}}}$.
+
+\
+
+- Find the likelihood function, $L(\underline{\theta}|\mathbf{x})$.
+
+\
+\
+\
+\
+
+**IF** $L(\underline{\theta}|\mathbf{x})$ is differentiable and assumes a maximum on the parameter space, then . . .
+
+- Find the log-likelihood function, $\ln L(\underline{\theta}|\mathbf{x})$.
+
+\
+\
+\
+\
+
+- Find the partial derivative of the log-likelihood function with respect to each of the parameters.
+
+\
+\
+\
+\
+
+- Set the partial derivative(s) equal to zero, and solve to find $\hat{\underline{\theta}}_{\hbox{\tiny{MLE}}}$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+- Use the data to obtain the maximum likelihood estimate of $\underline{\theta}$.
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n \overset{iid}{\sim}$ N$(\mu,\sigma^2)$, where both $\mu$ and $\sigma^2$ are unknown. Find the MLE of $\underline{\theta} = \left(\begin{array}{c} \mu \\ \sigma^2 \end{array}\right)$.
+
+\
+
+- Find the likelihood function, $L(\underline{\theta}|\mathbf{x})$.
+
+\
+\
+\
+\
+
+**IF** $L(\underline{\theta}|\mathbf{x})$ is differentiable and assumes a maximum on the parameter space, then . . .
+
+- Find the log-likelihood function, $\ln L(\underline{\theta}|\mathbf{x})$.
+
+\
+\
+\
+\
+
+- Find the partial derivative of the log-likelihood function with respect to each of the parameters.
+
+\
+\
+\
+\
+\
+\
+\
+
+- Set the partial derivative(s) equal to zero, and solve to find $\hat{\underline{\theta}}_{\hbox{\tiny{MLE}}}$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be a random sample from the distribution with pdf
+
+$f(x;\theta) = \left \{ \begin{array}{ll} e^{-(x-\theta)} & \theta < x < \infty \\ 0 & \hbox{elsewhere} \end{array} \right .$. Find the MLE of $\theta$.
+
+- Find the likelihood function, $L(\underline{\theta}|\mathbf{x})$.
+
+\
+\
+
+**IF** $L(\underline{\theta}|\mathbf{x})$ is differentiable and assumes a maximum on the parameter space, then . . .
+
+\
+\
+\
+\
+\
+\
+
+So now what?!?!?!? What's going on here? Let's start over.
+
+- Find the likelihood function, $L(\underline{\theta}|\mathbf{x})$ (REMEMBER: $L(\underline{\theta}|\mathbf{x})$ is a function of $\underline{\theta}$, and the $x_is$ are fixed.)
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+- Graph the likelihood function, $L(\underline{\theta}|\mathbf{x})$.\
+  \
+  \
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be iid RVs with pdf $f(x;\alpha,\beta) = \left\{\begin{array}{lll}  \frac{\alpha}{\beta^\alpha}x^{\alpha-1}  & 0 < x < \beta \\ 0 & \hbox{elsewhere} \end{array}\right.$, where $\alpha, \beta > 0$. Find the MLEs of $\alpha$ and $\beta$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example (cont.)**:
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+The lengths (in mm) of cuckoos' eggs found in hedge sparrow nests can be modeled with this distribution. For the data: $$22.0, 23.9, 20.9, 23.8, 25.0, 24.0, 21.7, 23.8, 22.8, 23.1, 23.1, 23.5, 23.0, 23.0$$ find the MLEs of $\alpha$ and $\beta$.
+
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Advantage of MLEs: Invariance!**
+
+Often, we know the MLE of an unknown parameter, but we're really interested in estimating a function of the unknown parameter. MLEs are invariant to transformations of parameter.
+
+::: callout-tip
+# Theorem: Invariance Property of MLEs
+
+If $\hat\theta$ is the MLE of $\theta$, then for any function $\tau(\theta)$, the MLE of $\tau(\theta)$ is $\tau(\hat\theta)$.
+:::
+
+**Example**: Let $X_1,\dots, X_n \overset{iid}{\sim}$ N$(\mu,\sigma^2)$. Earlier, we found $\hat\mu_{\hbox{\tiny{MLE}}} = \bar X$ and $\hat\sigma^2_{\hbox{\tiny{MLE}}} = \frac{1}{n} \sum_{i=1}^n (X_i - \bar X)^2$. Because MLEs are invariant, we can also find the MLEs of various functions of $\mu$ and $\sigma^2$.
+
+1.  The MLE of $e^\mu$ is\
+
+2.  The MLE of $\mu^2$ is\
+
+3.  The MLE of $\sigma/\mu$ is\
+    \
+    \
+
+**Example**: Earlier, we looked at an example where a telemarketing firm was interested in estimating the probability of a sale, $p$. Recall that $X_i =$ number of phone calls in a day until three sales are made, where $X_1,\dots, X_n \overset{iid}{\sim}$ NegBin$(3,p)$, $0 \leq p \leq 1$. We found $\hat p_{\hbox{\tiny{MLE}}} = \frac{3}{\bar X}$, and four data points were observed: 15, 20, 10, 22. Let's assume the firm is really interested in estimating the mean and the variance of the number of phone calls in a day before three sales are made. What are the ML estimators and estimates for the mean and variance of $X$?
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Other considerations when calculating MLEs**:
+
+- Numerical optimization:
+
+  For many problems we'll see in STAT 301, we use calculus to find $\hat\theta_{\hbox{\tiny{MLE}}}$ as an explicit function of the data, e.g., $\hat\theta_{\hbox{\tiny{MLE}}} = \bar X$. Most real life problems, however, require **numerical optimization**, which essentially involves searching the parameter space $\Theta$ for a $\hat\theta_{\hbox{\tiny{MLE}}}$ that maximizes the likelihood function for all $\theta \in \Theta$.
+
+- Numerical instability:
+
+  Because MLEs are found using a maximization process, they are susceptible to problems associated with that process, including **numerical instability**. Problems occur when the likelihood function is very flat in the neighborhood of the maximum or when there is no finite maximum.
+
+## Bayes Estimation
+
+In both STAT 262 and so far in STAT 301 we've been dealing with iid random variables $X_1,\dots, X_n$ with pdf/pmf $f(\mathbf{x}; \underline{\theta})$ where $\underline{\theta}$ is an unknown parameter (a fixed constant, or vector of constants). Another way to formulate the problem of estimating $\theta$ is by starting with the model above, and adding to it the assumption that $\theta$ is a random variable itself with a known distribution (called the **prior** distribution, $\pi(\theta)$). That is, we assume that $\theta \sim \pi(\theta)$, where $\pi(\theta)$ is a pdf or pmf. This means
+
+\
+\
+\
+
+**Example**: Suppose that a machine which stamps out parts for cars is examined to see what fraction $\theta$ of defectives are being produced. On any given day, 10 pieces of the machine's output are examined, with the observations denoted as $X_1,\dots, X_n$, where $X_i=1$ if the $i^{th}$ piece is defective and $X_i=0$ if it is nondefective. These can be viewed as random sample of size 10 from the Bernoulli density:
+
+\
+\
+
+which indicates the probability a given part is defective is equal to the unknown $\theta$. The joint density of the 10 variables $X_1,\dots, X_{10}$ is
+
+\
+\
+\
+
+There is additional information available about $\theta$. The researcher has observed on various days the value of $\theta$ changes, and it appears the change can be represented as a random variable with the density $$\pi(\theta) = 6 \theta (1-\theta), \hbox{ for } 0 \leq \theta \leq 1.$$ How can this additional information be used to estimate $\theta_{*}$, where $\theta_{*}$ is the value $\theta \in \Theta$ was equal to on the day the sample was drawn?
+
+To make use of this additional information, we're going to need to introduce some new notation and terminology. We also need to remember a few things from STAT 262.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+We now have $n+1$ random variables: $X_1,\dots, X_n$ and $\theta$.
+
+- The conditional distribution of $X_1,\dots, X_n$ given $\theta$ is\
+
+- We assume a (marginal) prior distribution for $\theta$,\
+
+- The joint distribution of $(X_1,\dots, X_n)$ and $\theta$ is\
+
+- The **posterior distribution** is the conditional distribution of $\theta$ given $x_1,\dots, x_n$.
+
+\
+\
+\
+\
+\
+\
+
+The posterior distribution contains all information about $\theta$ contained in $(x_1,\dots, x_n)$
+
+\newpage
+
+::: callout-tip
+# Bayesian Point Estimators
+
+Estimators of $\theta$ are derived from the posterior distribution $\pi(\theta|x_1,\dots,x_n)$. For example,
+
+1.  E$(\theta|x_1,\dots,x_n)$\
+
+2.  Median of $\pi(\theta|x_1,\dots,x_n)$
+
+3.  Mode of $\pi(\theta|x_1,\dots,x_n)$
+:::
+
+**Example**: Let $X_1,\dots,X_n$ be iid Bernoulli($p$), and assume $p \sim$ Beta$(\alpha,\beta)$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+\newpage
+
+**Example**: Again, let $X_1,\dots,X_n$ be iid Bernoulli($p$). This time, assume $p \sim$ Uniform(0,1).
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+To see how the posterior mean and the MLE ($\hat p$) compare as $n$ increases, the graph depicts the MLE in red and the posterior mean in blue. The data were generated to have a true $p$ of 0.75.
+
+![](bayes%20est.jpg){width="442"}
+
+Bayesian analysis and estimation are based on a fundamentally different philosphy than likelihood/frequentist based methods. Why use Bayesian approaches?
+
+- Allow the user to account for uncertainty in the systems we're trying to model, and more realistically capture the data-generating process
+
+- Allow the user to build custom models, rather than try to shove a complex problem in an existing box
+
+- More intuitive interpretations for some quantities (we'll see this with interval estimates)
+
+- Some models can only be fit using Bayesian methods
+
+## What's Next?
+
+We have seen several methods of obtaining point estimators. This leads to question: when faced with the choice of two or more estimators for the same parameter, which do we choose? Which estimator is "better"? There is not a universally appropriate measure of "goodness," but we can define some properties that will help us decide whether one (frequentist) estimator is better than another. In this context, we'll be thinking of $\theta$ as a scale parameter.
+
+**Example**: Earlier, we looked at the German tank problem, where we were interested in estimating the total number of German tanks produced during World War II. Two estimators were proposed: $X_{(n)}$ and $2 \bar X$. What properties could we use to compare the "goodness" of each estimator? That is, what properties do we want a "good" estimator to possess?
