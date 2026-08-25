@@ -1,0 +1,42 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Homework 1
+
+Due Wednesday, 2 September 2026
+
+1.  The opening prices per share $Y_1$ and $Y_2$ of two similar stocks are independent random variables, each with density function given by
+    $$f(y) = \left \{ \begin{array}{ll} \frac{1}{2} e^{-\frac{1}{2}(y-4)} & y \geq 4 \\ 0 & \hbox{ elsewhere } \end{array} \right . .$$
+    On a given morning an investor is going to buy shares of whichever stock is less expensive.
+
+    a.  Find the CDF for the price per share that the investor will pay.
+    b.  Find the probability density function for the price per share that the investor will pay.
+
+2.  Consider a random sample of size $n$ from a distribution with pdf
+    $$f(x) = \left \{ \begin{array}{ll} 1/x^2 & 1 \leq x < \infty \\ 0 & \hbox{else} \end{array} \right .$$
+
+    a.  Find the pdf of the smallest order statistic, $X_{(1)}$.
+    b.  Find the pdf of the largest order statistic, $X_{(n)}$.
+    c.  Assuming that $n$ is an odd number, find the pdf of the sample median.
+    
+3. In class, we derived the pdf of the largest order statistic for the Uniform(0,1) distribution.  Now, suppose that the number of minutes that you need to wait for a bus is uniformly distributed on the interval [0,15].  
+
+    a.  If you take the bus 5 times, what is the probability that your longest wait is less than 10 minutes? Find the probability theoretically, and also use simulation to check your work.
+    b.  If you take the bus 5 times, how long should you expect your longest wait to be? Find this value theoretically, and also use simulation to check your work.
+
+
+   

@@ -1,0 +1,579 @@
+# Evaluating Estimators
+
+For a particular estimation problem there may be several (maybe even many) competing estimators. We'll spend the next bit of time answering the questions:
+
+- Are some estimators better, in some sense, than others?
+- If so, in what sense?
+
+Right off, we acknowledge that some estimators are indeed better than others. For example, if $X_1,\dots, X_n \sim$ Poisson($\lambda)$ we have two competing estimators for $\lambda$: $\bar X$ and $S^2$ (why?). It turns out that $\bar X$ is a better estimator than is $S^2$. To see why, we'll start by discussing some properties of estimators that will help us decide which are better.
+
+## Criteria for Good Estimators
+
+::: callout-tip
+# "Good" estimators
+
+A good estimator is **unbiased**. An estimator $\hat\theta$ is an unbiased estimator of $\theta$ if: $$\hbox{E}(\hat\theta) = \theta.$$ In addition to being unbiased, a good estimator has small variance. If $\hat\theta_1$ and $\hat\theta_2$ are unbiased estimators of $\theta$, then $\hat\theta_1$ is a better estimator (or, a more efficient estimator) than $\hat\theta_2$ if: $$\hbox{Var}(\hat\theta_1) < \hbox{Var}(\hat\theta_2).$$
+:::
+
+Remember that estimators are statistics, and are themselves RVs. As such, they have their own distributions.\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+If an estimator of a parameter (or function of parameters) is unbiased and has the smallest variance of all possible unbiased estimators of that parameter (or function of parameters), then the estimator is the **best unbiased (or most efficient) estimator** for that parameter (or function of parameters).
+
+::: callout-tip
+# Definition: Bias
+
+Let $\hat\theta$ be an estimator for a parameter $\theta$. The **bias** of $\hat\theta$ is
+
+$$\hbox{Bias}(\hat\theta) = \hbox{\hspace{50mm}}$$
+
+An estimator whose bias is 0 (i.e., E($\hat\theta$) = $\theta$) is an **unbiased estimator** for $\theta$.
+:::
+
+It turns out these two properties (bias and variance) can be combined into a single measure: the mean-square error.
+
+::: callout-tip
+# Definition: Mean-square error
+
+If $\hat\theta$ is an estimator of $\theta$, the **mean-square error** of $\hat\theta$ is: $$\hbox{MSE}(\hat\theta) = \hbox{\hspace{60mm}}$$
+:::
+
+The MSE has the following property: $$\hbox{MSE}(\hat\theta) = \hbox{Var}(\hat\theta) + [\hbox{Bias}(\hat\theta)]^2$$
+
+**Proof**:
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+If an estimator is unbiased, the MSE is equal to the variance.
+
+**Example**: Suppose $Y_1,Y_2,Y_3$ are iid Uniform$(0,\theta)$ random variables. Consider the following estimators of $\theta$: $\hat\theta_1 = Y_1$, $\hat\theta_2 = 2Y_1$, $\hat\theta_3 = Y_1 + Y_2$, $\hat\theta_4 = Y_{(n)}$, $\hat\theta_5= \bar Y$.
+
+- Which of these estimators are unbiased for $\theta$?
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+- Considering only the unbiased estimators, which has smallest MSE?
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+## "Best" Unbiased Estimators
+
+In practice, we restrict our attention to unbiased estimators if at all possible (there are some situations where unbiased estimators do not exist), so we only need to compare variances (since MSE = Variance in this situation). However, even after we rule out biased estimators, we may still have several competing estimators (see above). To decide which is "best," we need merely to find the one with the smallest variance.
+
+::: callout-tip
+# Definition: Best unbiased estimator
+
+An estimator $\hat\theta^*$ is **best unbiased** for $\theta$ if
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+$\hat\theta^*$ is also called a **uniformly minimum variance unbiased estimator** (UMVUE).
+:::
+
+**Example**: Suppose again that $Y_1, Y_2, Y_3$ are iid Uniform$(0,\theta)$ RVs.
+
+- Based on what we did in the previous example, construct an unbiased estimator of $\theta$ based solely on $\bar Y$ and another based solely on $Y_{(n)}$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+- Between these 2 unbiased estimators, which has the smallest MSE? Intuitively, why does it make sense that this estimator would be "better" for estimating $\theta$ than the other? With a different distribution (the exponential, say) would this still hold true? Why or why not?
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+### Data Reduction
+
+The distributions we've discussing are **parametric** statistical models, $f(x;\theta)$. That is, the random variable $X$ has a distribution which depends on an unknown parameter $\theta$ (possibly vector-valued).
+
+- Typically, we collect a random sample $X_1,\dots, X_n$, and the information in the observed values $\{x_1,\dots, x_n\}$ is used to make inferences/decisions about $\theta$
+- The random variables $X_1,\dots, X_n$ contain information relevant to estimating $\theta$, but may also contain information that is irrelevant for estimating $\theta$
+- Often a **summary statistic** $T(X_1,\dots, X_n)$ is computed from the random sample, and we hope that $T(\mathbf{X})$ will be useful in making inferences about $\theta$
+- Summary statistics are most useful if they contain all information relevant to $\theta$, but toss out the irrelevant information
+- A summary statistic is a **sufficient statistic** if a statistician who knows the value of $T(\mathbf{X})$ can do just as good a job of estimating the unknown parameter $\theta$ as a statistician who knows the observed values of the entire random sample.
+
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+#### Sufficiency
+
+::: callout-tip
+# Definition: Sufficiency principle
+
+A statistic $T(\mathbf{X})$ is a **sufficient statistic** for $\theta$ if the conditional distribution of the sample $\mathbf{X}$ given $T(\mathbf{X})$ does not depend on $\theta$. If $T(\mathbf{X})$ is a sufficient statistic for $\theta$, then any inference about $\theta$ should depend on the sample $\mathbf{X}$ only through the value $T(\mathbf{X})$.
+
+- *Discrete Distributions*
+
+  The statistic $T(\mathbf{X})$ is a sufficient statistic for $\theta$ if and only if $$P(X_1=x_1,\dots, X_n=x_n|T(\mathbf{X})=t) = \frac{P(X_1=x_1,\dots, X_n=x_n, T(\mathbf{X})=t)}{P(T(\mathbf{X})=t)}$$ does not depend on $\theta$
+
+- *Continuous Distributions*
+
+  Let $f(\mathbf{x};\theta)$ be the joint pdf of $(X_1,\dots, X_n)$ and let $q(T(\mathbf{X});\theta)$ be the pdf of $T(\mathbf{X})$. The statistic $T(\mathbf{X})$ is a sufficient statistic for $\theta$ if and only if $\frac{f(\mathbf{x};\theta)}{q(T(\mathbf{X});\theta)}$ does not depend on $\theta$.
+  
+:::
+
+**Example**: Let $X_1,\dots, X_n$ be iid Binomial$(n=1,p)$ RVs. Consider $T(\mathbf{X}) =$
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be iid Uniform$(0,\theta)$ RVs. Consider $T(\mathbf{X}) = X_{(1)}$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+Although the definition of a sufficient statistic is easy to understand intuitively, it turns out to be not much help. Why?
+
+\
+\
+\
+
+Instead, we'll appeal to the following theorem.
+
+::: callout-tip
+# Theorem: Factorization Theorem
+
+Let $f(\mathbf{x};\theta)$ be the joint pdf (or pmf) of $\mathbf{X}=(X_1,\dots,X_n)$. A statistic, $T(X_1,\dots,X_n) = T(\mathbf{X})$, is sufficient for $\theta$ if and only if there exist functions $g(T(\mathbf{x});\theta)$ and $h(\mathbf{x})$ such that for all sample points $\mathbf{x} = (x_1,\dots, x_n)$ and all $\theta$ $$f(\mathbf{x};\theta) = \hbox{\hspace{80mm}}$$
+:::
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be iid N$(\mu,\sigma^2)$ RVs, where $\sigma^2$ is known.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+**Example**: Let $X_1,\dots, X_n$ be iid N$(\mu,\sigma^2)$ RVs, where both $\mu$ and $\sigma^2$ are unknown.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+**Example**: Let $X_1,\dots,X_n$ be iid Uniform$(0,\theta)$ RVs.
+
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+It turns out there are **many** sufficient statistics for a parameter. If $T(\mathbf{X})$ is sufficient for $\theta$, then any one-to-one function of $T(\mathbf{X})$ is also sufficient for $\theta$. For example, in N$(\mu,\sigma^2)$ scenario, with $\sigma^2$ known, we found that $\bar X$ is sufficient for $\mu$. This means any one-to-one function of $\bar X$ is also sufficient:
+
+\
+\
+\
+
+In fact, the entire random sample $T(\mathbf{X}) = (X_1,\dots, X_n)$ is always sufficient (which makes sense! A statistician using the entire random sample should do just as a good a job of estimating $\theta$ as another statistician using the entire random sample).
+
+If there are lots of sufficient statistics, are we in any better shape? Have we gotten any closer to figuring out which estimator to use? To figure this out, we'll need another property of (some) statistics: completeness.
+
+#### Completeness
+
+So far, we've talked about a few desirable properties of estimators: unbiasedness and sufficiency. We're still on the hunt for a "best" unbiased estimator: a UMVUE. We talked earlier about the fact that UMVUEs have the smallest variance possible for an estimator of a particular parameter (or function of parameters). Sufficiency (and, more specifically, completeness) help us in the search for **the** minimum variance estimator. How do we know if a statistic is complete?
+
+::: callout-tip
+# Definition: Complete statistic
+
+Let $f(t;\theta)$ denote the family of pdfs/pmfs of a statistic $T(\mathbf{X}) = T(X_1,\dots,X_n)$. The family of probability distributions is called **complete** if E$[g(T)] = 0$ for all $\theta$ implies that P$(g(T)=0)=1$ for all $\theta$. Equivalently, $T(\mathbf{X})$ is called a **complete statistic**.
+:::
+
+This might be the strangest definition we'll see all semester! It's saying that, if a statistic is complete, then any unbiased estimator of 0 based on that statistic should be 0 itself. What?!?!? Why do we care about unbiased estimators of 0? Here's why \dots we want **the** best estimator (the UMVUE). Completeness ensures we end up with **the** UMVUE, not **a** UMVUE. Basically, if a statistic is complete, then 2 different functions of $T$ cannot have the same expected value.
+
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be iid Uniform$(0,\theta)$ RVs.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+Gross! Do we really have to go through this awfulness to find a complete statistic? Luckily, if a pdf/pmf belongs to a special family of distributions, our lives get a lot easier. We hope (hope! hope! hope!) that our pdf/pmf is an **exponential family**.
+
+::: callout-tip
+# Definition: Exponential family
+
+A family of pdfs/pmfs is called an **exponential family** if it can be written as: $$f(x;\theta) = \hbox{\hspace{80mm}}$$ where $h(x)$ and $t_1(x),t_2(x),\dots,t_k(x)$ are real-valued function of $X$ alone (not of $\theta$) and $c(\theta)$ and $\omega_1(\theta), \omega_2(\theta), \dots, \omega_k(\theta)$ are real-valued functions of $\theta$ alone (not of $X$).
+:::
+
+And this is important because . . . ????
+
+::: callout-tip
+# Theorem: Exponential families and completeness
+
+Let $X_1,\dots, X_n$ be iid RVs with with a pdf/pmf that belongs to an exponential family. That is, $$f(x;\theta) = \hbox{\hspace{80mm}}$$ Then the statistic $$T(\mathbf{X}) = \hbox{\hspace{100mm}}$$ is complete and sufficient for $\theta$ (so long as the parameter space $\Theta$ contains an open set in $\mathbb{R}^k$. We're not going to worry about this.)
+:::
+
+**Example**: Let $X_1,\dots, X_n$ be iid Normal$(\mu,\sigma^2)$ RVs.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+**Example**: Let $X_1,\dots, X_n$ be iid Geometric$(p)$ RVs.
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+**Example**: Let $X_1,\dots, X_n$ be iid Beta$(\alpha,\beta)$ RVs.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+**Example**: Let $X_1,\dots, X_n$ be iid Uniform$(-\theta,0)$ RVs.
+
+\
+\
+\
+
+\newpage
+
+## Sufficiency, Completeness, and Best Estimation
+
+Our goal (still!) is to use $(X_1,\dots, X_n)$ to find the best (i.e., smallest variance) unbiased estimator for an unknown parameter $\theta$ (or function of parameters). It turns out that sufficiency and completeness help us achieve this goal.
+
+::: callout-tip
+# Theorem: Lehmann-Scheffè
+
+Let $U$ be a complete sufficient statistic for $\theta$ and let $T(U)$ be any estimator based **only** on $U$. Then $T(U)$ is the unique, best unbiased estimator (UMVUE) of $\tau(\theta) = \hbox{E}[T(U)]$. 
+:::
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+
+FINALLY, we have a method for obtaining a best unbiased estimator:
+
+$\hspace{20mm}$ **COMPLETENESS + UNBIASED ESTIMATOR = UMVUE**
+
+**Example**: Let $X_1,\dots, X_n$ be iid Binomial$(m,p)$ RVs. We want the UMVUE of $p$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be iid N$(\mu,1)$ RVs. We want the UMVUE of $\mu^2$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+**Example**: Let $X_1,\dots, X_n$ be iid Geometric$(p)$. We want the UMVUE of $p$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+
+\newpage
+
+What if we can't find an unbiased estimator based on the complete sufficient statistic?
+
+::: callout-tip
+# Theorem: Rao-Blackwell + Lehmann-Scheffè
+
+Let $U$ be a complete sufficient statistic for $\theta$, and let $h(X_1,\dots, X_n) = h(\mathbf{X})$ be **any** unbiased estimator of $\tau(\theta)$. Then
+$$
+T(U) = \hbox{E}[h(\mathbf{X})|U]
+$$
+is the UMVUE of $\tau(\theta)$.
+:::
+
+
+**Example**: (continued) Let $X_1,\dots, X_n$ be iid Geometric$(p)$. We want the UMVUE of $p$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be iid Binomial$(n=1,p)$ RVs. We want the UMVUE of $p(1-p)$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
