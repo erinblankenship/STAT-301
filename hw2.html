@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>syllabus-fall-2026</title>
+<title>hw2</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,18 +26,47 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="syllabus fall 2026_files/libs/clipboard/clipboard.min.js"></script>
-<script src="syllabus fall 2026_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="syllabus fall 2026_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="syllabus fall 2026_files/libs/quarto-html/popper.min.js"></script>
-<script src="syllabus fall 2026_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="syllabus fall 2026_files/libs/quarto-html/anchor.min.js"></script>
-<link href="syllabus fall 2026_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="syllabus fall 2026_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="syllabus fall 2026_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="syllabus fall 2026_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="syllabus fall 2026_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="hw2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="hw2_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="hw2_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="hw2_files/libs/quarto-html/popper.min.js"></script>
+<script src="hw2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="hw2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="hw2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="hw2_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="hw2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="hw2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="hw2_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -45,277 +74,34 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="syllabus-fall-2026.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="hw2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 
 
 
-<section id="stat-301-mathematical-statistics-and-modeling-i" class="level1">
-<h1><strong>STAT 301: Mathematical Statistics and Modeling I</strong></h1>
-<p><strong>Instructor:</strong> Dr.&nbsp;Erin Blankenship (she/her)</p>
-<p><strong>email:</strong> <code>erin.blankenship@unl.edu</code></p>
-<p><strong>Lecture:</strong> 12:00-12:50 Monday/Wednesday/Friday, 272 Plant Sciences Hall</p>
-<p><strong>Office Hours:</strong> 9:00-10:00 Monday/Wednesday/Friday or by appointment; 343B Hardin Hall, North Wing</p>
-<p><strong>Required Materials:</strong> No book is required.</p>
-<p><strong>Reference:</strong> <em>Mathematical Statistics with Applications</em>, 7th edition (Wackerly, Mendenhall and Scheaffer; 2008)</p>
-<p><strong>Prerequisites:</strong> MATH 314, STAT 212, STAT 262</p>
-<p><strong>Course Description:</strong> Essential statistical theory and methods for professional statistical practice. Broad statistical topics include estimation and hypothesis testing, elementary Bayesian concepts, multiple linear regression, linear mixed effects models, analysis of variance (ANOVA), logistic regression, Poisson regression, and nonparametric methods.</p>
-<p><strong>Course Goals:</strong></p>
-<ul>
-<li><p>Understand different methods of obtaining point estimates, including maximum likelihood, method of moments, and Bayesian estimation</p></li>
-<li><p>Understand that some estimators are better than others, and be able to evaluate estimators</p></li>
-<li><p>Understand the theory underlying hypothesis tests, including errors, power, size, and level of tests</p></li>
-<li><p>Be able to derive hypothesis tests for simple situations from first principles, including likelihood ratio tests and most powerful tests</p></li>
-<li><p>Be able to derive interval estimates by inverting tests and using pivotal quantities</p></li>
-</ul>
-<p><br>
-</p>
-<p><strong>Grading:</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Assignment(s)</th>
-<th>Contribution to Final Grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Homework</td>
-<td>25%</td>
-</tr>
-<tr class="even">
-<td>Exam 1</td>
-<td>25%</td>
-</tr>
-<tr class="odd">
-<td>Exam 2</td>
-<td>25%</td>
-</tr>
-<tr class="even">
-<td>Final Project</td>
-<td>25%</td>
-</tr>
-</tbody>
-</table>
-<p><br>
-</p>
-<p><strong>Grading Scale:</strong></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Grade</th>
-<th>Final Percentage Range</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A</td>
-<td>94.0-100</td>
-</tr>
-<tr class="even">
-<td>A-</td>
-<td>90.0-93.99</td>
-</tr>
-<tr class="odd">
-<td>B+</td>
-<td>88.0-89.99</td>
-</tr>
-<tr class="even">
-<td>B</td>
-<td>84.0-87.99</td>
-</tr>
-<tr class="odd">
-<td>B-</td>
-<td>80.0-83.99</td>
-</tr>
-<tr class="even">
-<td>C+</td>
-<td>78.0-79.99</td>
-</tr>
-<tr class="odd">
-<td>C</td>
-<td>74.0-77.99</td>
-</tr>
-<tr class="even">
-<td>C-</td>
-<td>70.0-73.99</td>
-</tr>
-<tr class="odd">
-<td>D+</td>
-<td>68.0-69.99</td>
-</tr>
-<tr class="even">
-<td>D</td>
-<td>64.0-67.99</td>
-</tr>
-<tr class="odd">
-<td>D-</td>
-<td>60.0-63.99</td>
-</tr>
-<tr class="even">
-<td>F</td>
-<td>&lt;60.0</td>
-</tr>
-</tbody>
-</table>
-<p><br>
-<strong>Course Expectations:</strong> In this course, you are expected to have professional behavior. You are expected to attend all class meetings, be curious, ask questions, seek opportunities to learn, and be open and responsive to constructive feedback. In addition:</p>
-<ul>
-<li><p>Be an active participant–statistics is not a spectator sport!</p></li>
-<li><p>Be committed, take your work seriously</p></li>
-<li><p>Engage with the in-class activities and labs</p></li>
-<li><p>Help others–if you understand the material being discussed, practice your mentoring skills. This does not means sharing answers, but instead helping others understand the concepts.</p></li>
-<li><p>Complete any assigned readings.</p></li>
-</ul>
-<p>You are also expected to exhibit a professional demeanor (language, attitude) toward others. Disagreement during discussions is welcome and often productive in developing a deeper understanding of the concepts being discussed. However, disagreement does not warrant yelling or disrespectful language or behavior. Unprofessional behavior will not be tolerated, and appropriate actions will be taken to prevent future occurrences.</p>
-<p><strong>Recording of class-related activity:</strong> I invite all of you to join me in actively creating and contributing to a positive, productive, and respectful classroom culture. Each student contributes to an environment that shapes the learning process. Any work and/or communication that you are privy to as a member of this course should be treated as the intellectual property of the speaker/creator, and is not to be shared outside the context of this course.</p>
-<p>Students may not make or distribute screen captures, audio/video recordings of, or livestream, any class-related activity, including lectures and presentations, without express prior written consent from me or an approved accommodation from Services for Students with Disabilities. If you have (or think you may have) a disability such that you need to record or tape class-related activities, you should contact Services for Students with Disabilities. If you have an accommodation to record class-related activities, those recordings may not be shared with any other student, whether in this course or not, or with any other person or on any other platform.</p>
-<p><strong>Homework:</strong> Approximately 8-10 homework assignments will be made over the course of the semester. The only way to learn statistics is to practice working problems, and homework is therefore an essential part of the course. Bear in mind that homework is for your benefit, not the instructor’s.</p>
-<p>Homework may be submitted either on paper or through Canvas. If you opt to submit via Canvas, it must be submitted as a single pdf (not multiple files), and any scans must be high quality. If I cannot read it, it will not be graded. Homework will be graded partially on completeness and partially on accuracy.</p>
-<p><strong>Exams:</strong> Two exams will be given during the course of the semester, tentatively scheduled on the dates in the course outline. The in-class exams are closed book and notes. The exams will evaluate your understanding of the material, as well as your ability to synthesize and transfer that knowledge to other scenarios and situations; questions will assess conceptual understanding as opposed to mere memorization.</p>
-<p><strong>Calculators:</strong> We will be using a great deal of calculus in this course. While I realize that many calculators will do the calculus we’ll use, such calculators will <strong>not</strong> be permitted on in-class exams. Don’t get too reliant on them for homework!</p>
-<p><strong>Final Project:</strong> A final group project will take the place of a final exam. The project will include a presentation during the last week of class and a final written report. More details on the project will be distributed later.</p>
-<p><strong>Instructional Continuity:</strong> If in-person classes are canceled, you will be notified of the instructional continuity plan for this class through Canvas.</p>
-<p><strong>AI and Explainability Policy:</strong> (adapted from Dr.&nbsp;Vanderplas)</p>
-<ul>
-<li><p>Any use of generative AI must be disclosed in an appendix to your submission - this includes brainstorming, editing, using AI as spell-check/grammar-check, and so on. You must document the following:</p>
-<ul>
-<li><p>the version of the generative AI used</p></li>
-<li><p>the full sequence of prompts and responses</p></li>
-<li><p>any additional inputs you provided to the AI system</p></li>
-<li><p>a “diff” between the AI responses and your submission, showing exactly what was generated by the AI system and what you changed.</p></li>
-</ul></li>
-</ul>
-<p>It may be useful to leverage AI tools to ensure that your work conforms to grammar and style guidelines, but I very highly discourage the use of generative AI for content or code (I’ve seen it generate incorrect code too many times).</p>
-<ul>
-<li>You must be able to explain any work you turn in, including code. If you cannot explain the logic behind your approach as well as how it works in practice, then you will not receive credit for your submission.</li>
-</ul>
-<p><strong>Department Grade Appeal Policy:</strong> The Department of Statistics <a href="https://statistics.unl.edu/department-policies-grade-appeals-academic-integrity/">grade appeal policy</a></p>
-<p><strong>Academic Integrity:</strong> You are encouraged to work together on problems and exercises, but the work you turn in must be your own (unless the assignment specifically states otherwise). Work on exams must be your own. University policy will be followed in cases of academic dishonesty: In cases where an instructor finds that a student has committed any act of academic dishonesty, the instructor may in the exercise of his or her professional judgment impose an academic sanction as severe as giving the student a failing grade in the course. Before imposing an academic sanction the instructor shall first attempt to discuss the matter with the student. If deemed necessary by either the instructor or the student, the matter may be brought to the attention of the student’s major advisor, the instructor’s department chairperson or head, or the dean of the college in which the student is enrolled. For additional details see <a href="https://statistics.unl.edu/department-policies-grade-appeals-academic-integrity/">the department policy.</a></p>
-<p><strong>Services for Students with Disabilities:</strong> The University strives to make all learning experiences as accessible as possible. If you anticipate or experience barriers based on your disability (including mental health, chronic or temporary medical conditions), please let your instructor know immediately so that you can discuss options privately. To establish reasonable accommodations, your instructor may request that you register with Services for Students with Disabilities. If you are eligible for services and register with the office, make arrangements with your instructor as soon as possible to discuss your accommodations so they can be implemented in a timely manner. SSD is located in 117 Louise Pound Hall and can be reached at 402-472-3787.</p>
-<p><strong>University Policies:</strong> All <a href="https://executivevc.unl.edu/academic-excellence/teaching-resources/course-policies/">university-wide course policies.</a></p>
-<p><u><strong><em>TENTATIVE</em></strong></u> <strong>Course Outline</strong></p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 22%">
-<col style="width: 22%">
-<col style="width: 31%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Week</th>
-<th>Dates</th>
-<th>Notes</th>
-<th>Topics</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>24-28 August</td>
-<td></td>
-<td>Order statistics</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>31 Aug -4 Sept</td>
-<td>No class on 4 Sept</td>
-<td>Order statistics</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>7-11 September</td>
-<td></td>
-<td>Point estimation; method of moments</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>11-18 September</td>
-<td></td>
-<td>Maximum likelihood estimation</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>21-25 September</td>
-<td></td>
-<td>Evaluating estimators</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>28 Sept - 2 Oct</td>
-<td></td>
-<td>Sufficiency, completeness, and best estimation</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>5-9 October</td>
-<td></td>
-<td>Best estimators; Review and <strong>Exam 1</strong></td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>12-16 October</td>
-<td></td>
-<td>Bayes estimators; intro to hyp testing</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>19-23 October</td>
-<td>No class on 19 Oct</td>
-<td>Intro to hyp testing</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>26-30 October</td>
-<td></td>
-<td>Likelihood ratio tests</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>2-6 November</td>
-<td></td>
-<td>NP Lemma; MLR; Karlin-Rubin</td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>9-13 November</td>
-<td></td>
-<td>p-values; intro to interval estimates</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td>16-20 November</td>
-<td></td>
-<td>Inverting tests; pivotal quantities</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>23-27 November</td>
-<td>No class on 25 or 27 Nov</td>
-<td>Bayesian intervals</td>
-</tr>
-<tr class="odd">
-<td>15</td>
-<td>30 Nov - 4 Dec</td>
-<td></td>
-<td>Catch-up; Review and <strong>Exam 2</strong></td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td>7-11 December</td>
-<td></td>
-<td>Delta-method; <strong>Final project presentations on 11 December</strong></td>
-</tr>
-<tr class="odd">
-<td>Finals Week</td>
-<td></td>
-<td>No final exam</td>
-<td><strong>Final project papers due Monday, 14 December at 9:00 am</strong></td>
-</tr>
-</tbody>
-</table>
+<section id="homework-2" class="level1">
+<h1>Homework 2</h1>
+<p>Due Wednesday, 9 September 2026</p>
+<ol type="1">
+<li><p>The Weibull density function is given by <span class="math display">\[
+f(x; \alpha,m) = \left \{ \begin{array}{ll} \frac{1}{\alpha} m x^{m-1} e^{-x^m/\alpha} &amp; x &gt; 0 \\ 0 &amp; \hbox{elsewhere} \end{array} \right .
+\]</span> where <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(m\)</span> are positive constants. The Weibull density function is often used as a model for the lifelengths of physical systems.</p>
+<ol type="a">
+<li>Let <span class="math inline">\(Y\)</span> follow an exponential distribution with mean parameter <span class="math inline">\(\beta\)</span>. Prove that <span class="math inline">\(W=\sqrt{Y}\)</span> has a Weibull distribution with <span class="math inline">\(\alpha=\beta\)</span> and <span class="math inline">\(m=2\)</span>. (Hint: this is a transformation problem)</li>
+<li>If a random sample of size <span class="math inline">\(n\)</span> (<span class="math inline">\(X_1,\dots, X_n\)</span>) is taken from a Weibull distribution, find the pdf of the smallest order statistic <span class="math inline">\(X_{(1)}\)</span>. What distribution, with parameters, does <span class="math inline">\(X_{(1)}\)</span> follow?</li>
+</ol></li>
+<li><p>Let <span class="math inline">\(X_1,\dots, X_n\)</span> be a random sample from the Beta<span class="math inline">\((\alpha=2,\beta=2)\)</span> distribution. Find the pdf of the largest order statistic, <span class="math inline">\(X_{(n)}\)</span>.</p></li>
+<li><p>Find a method-of-moments estimator (MME) of <span class="math inline">\(\theta\)</span> based on a random sample <span class="math inline">\(X_1,\dots, X_n\)</span> from each of the following distributions.</p>
+<ol type="a">
+<li><span class="math inline">\(f(x;\theta) = \theta (1-\theta)^{x-1}\)</span>, <span class="math inline">\(x=1,2,\dots; 0 \leq \theta \leq 1\)</span></li>
+<li><span class="math inline">\(f(x;\theta) = (\theta+1) x^{-\theta-2}\)</span>, <span class="math inline">\(x&gt;1; \theta&gt;0\)</span></li>
+<li><span class="math inline">\(f(x;\theta) = \theta^2 x e^{-\theta x}\)</span>, <span class="math inline">\(x&gt;0; \theta&gt;0\)</span></li>
+</ol></li>
+<li><p>Let <span class="math inline">\(X_1,\dots, X_n\)</span> be a random sample from the pdf <span class="math display">\[
+f(x;\theta) = \theta x^{\theta-1}, \hbox{\hspace{5mm}} 0 \leq x \leq 1; 0 &lt; \theta &lt; \infty
+\]</span> Find a method-of-moments estimator of <span class="math inline">\(\theta\)</span>.</p></li>
+</ol>
 </section>
 
 </main>

@@ -1,0 +1,44 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Homework 2
+
+Due Wednesday, 9 September 2026
+
+1. The Weibull density function is given by
+$$
+f(x; \alpha,m) = \left \{ \begin{array}{ll} \frac{1}{\alpha} m x^{m-1} e^{-x^m/\alpha} & x > 0 \\ 0 & \hbox{elsewhere} \end{array} \right .
+$$
+where $\alpha$ and $m$ are positive constants. The Weibull density function is often used as a model for the lifelengths of physical systems.
+
+   a.  Let $Y$ follow an exponential distribution with mean parameter $\beta$. Prove that $W=\sqrt{Y}$ has a Weibull distribution with $\alpha=\beta$ and $m=2$. (Hint: this is a transformation problem)
+   b.  If a random sample of size $n$ ($X_1,\dots, X_n$) is taken from a Weibull distribution, find the pdf of the smallest order statistic $X_{(1)}$. What distribution, with parameters, does $X_{(1)}$ follow?
+   
+2. Let $X_1,\dots, X_n$ be a random sample from the Beta$(\alpha=2,\beta=2)$ distribution. Find the pdf of the largest order statistic, $X_{(n)}$.
+
+3. Find a method-of-moments estimator (MME) of $\theta$ based on a random sample $X_1,\dots, X_n$ from each of the following distributions.
+
+   a.  $f(x;\theta) = \theta (1-\theta)^{x-1}$, $x=1,2,\dots; 0 \leq \theta \leq 1$
+   b.  $f(x;\theta) = (\theta+1) x^{-\theta-2}$, $x>1; \theta>0$
+   c.  $f(x;\theta) = \theta^2 x e^{-\theta x}$, $x>0; \theta>0$
+   
+4.  Let $X_1,\dots, X_n$ be a random sample from the pdf
+$$
+f(x;\theta) = \theta x^{\theta-1}, \hbox{\hspace{5mm}} 0 \leq x \leq 1; 0 < \theta < \infty
+$$
+Find a method-of-moments estimator of $\theta$.
+
