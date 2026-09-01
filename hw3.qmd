@@ -1,0 +1,55 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Homework 3
+
+Due Wednesday, 16 September 2026
+
+1.  Most of our problems will start off with a statement like "Let $X_1, \dots, X_n$ be a random sample from the ____________ distribution." However, this distributional assumption is often just that, an assumption. Sometimes that assumption is reasonable, other times it isn't. We can sometimes use simulation, together with known properties of the assumed distribution, to check whether our distributional assumption is reasonable. To illustrate this, consider the following sample of bay anchovy larvae counts taken from the Hudson River: 158, 143, 106, 57, 97, 80, 109, 109, 350, 224, 109, 214, 84.
+
+    a. If we assume that larvae are distributed randomly and uniformly in the river, then the number collected in a fixed size net could potentially follow a Poisson distribution. Explain why this scenario matches the characteristics of a Poisson distribution.
+    b. To check whether or not the Poisson assumption is reasonable, we can check whether the mean and variance of the observed data are consistent with the Poisson assumption. To start with, calculate the observed mean and variance of the data.
+    c. If the data really do arise from a Poisson distribution, the mean and variance should be about the same (why?). In this case, they aren't. However, we wouldn't expect them to be **exactly** the same, even if the Poisson assumption is true. Why not?
+    d. The question remains, how should we expect $S^2$ to behave if the data really do arise from a Poisson distribution? To answer this question, we can carry out a simulation. We want our simulated data sets to mimic the one collected. So, we'll generate data sets of size $n=13$, since that was the sample size of the original data. In addition, we'll simulate the data sets assuming they come from a Poisson distribution with $\lambda=\bar x$, since that's our best guess at the parameter. In your favorite simulation software (R, SAS, $\dots$), generate 100 data sets each with $n=13$ observations.
+    e. For each data set, calculate $S^2$.
+    f. Construct a histogram of your 100 simulated $S^2$ values.
+    g. Where does the $s^2$ from the original data set fall on this histogram? How many of the simulated $S^2$ values are greater than the observed $s^2$?
+    h. What does this lead you to believe about the Poisson assumption? Is it reasonable in this case? What is your reasoning?
+
+
+2.  Find the maximum likelihood estimator (MLE) of $\theta$ based on a random sample $X_1,\dots,X_n$ from each of the following distributions
+
+    a. $f(x;\theta)=\theta(1-\theta)^{x-1}$, $x=1,2,\dots$ ; $0 \leq \theta \leq 1$
+    b. $f(x;\theta)=(\theta+1)x^{-\theta-2}$, $x>1$, $\theta>0$
+    c. $f(x;\theta)=\theta^2 x e^{-\theta x}$, $x>0$, $\theta>0$
+    
+3.  Let $X_1,\dots, X_n$ be a random sample from a gamma$(\alpha,\beta)$ distribution. Find the MLE of $\beta$, assuming $\alpha$ is known.
+
+\newpage
+
+4.  Suppose that the random variables $Y_1,\dots, Y_n$ satisfy
+$$
+Y_i = \alpha + \beta x_i + \epsilon_i, \hbox{\hspace{5mm}} i=1,\dots, n,
+$$
+where $x_1,\dots, x_n$ are \textbf{fixed constants} and $\epsilon_1,\dots, \epsilon_n$ are iid N$(0,\sigma^2)$, where $\sigma^2$ is a fixed constant.
+
+    a. What distribution do $Y_1,\dots,Y_n$ follow? What is your reasoning?
+    b. Find the likelihood and log likelihood functions.
+    c. Take the derivative of the log likelihood function with respect to both $\alpha$ and $\beta$.
+    d. It turns out that if we set both of these derivatives equal to 0 and solve, we get $$\hat\beta_{\hbox{\tiny{MLE}}} = \frac{n \sum x_i y_i - (\sum x_i)(\sum y_i)}{n \sum x_i^2 - (\sum x_i)^2} = \frac{\sum x_i y_i - \frac{(\sum x_i)(\sum y_i)}{n}}{\sum x_i^2 - \frac{(\sum x_i)^2}{n}}$$ and $$\hat\alpha_{\hbox{\tiny{MLE}}} = \frac{\sum y_i}{n} - \hat\beta \frac{\sum x_i}{n} = \bar y - \hat\beta_{\hbox{\tiny{MLE}}} \bar x.$$
+    
+       Do some research, and find formulas for the **least squares estimates** of $\alpha$ and $\beta$. What do you find? Where have you seen/used these before?
