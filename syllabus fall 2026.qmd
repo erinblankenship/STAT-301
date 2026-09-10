@@ -139,7 +139,7 @@ It may be useful to leverage AI tools to ensure that your work conforms to gramm
 [***TENTATIVE***]{.underline} **Course Outline**
 
 | Week | Dates | Notes | Topics |
-|-----------------|-----------------|-----------------|-----------------------|
+|----|----|----|----|
 | 1 | 24-28 August |  | Order statistics |
 | 2 | 31 Aug -4 Sept | No class on 4 Sept | Order statistics |
 | 3 | 7-11 September |  | Point estimation; method of moments |
