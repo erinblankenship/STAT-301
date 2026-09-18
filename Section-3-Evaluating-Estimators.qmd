@@ -202,7 +202,6 @@ A statistic $T(\mathbf{X})$ is a **sufficient statistic** for $\theta$ if the co
 - *Continuous Distributions*
 
   Let $f(\mathbf{x};\theta)$ be the joint pdf of $(X_1,\dots, X_n)$ and let $q(T(\mathbf{X});\theta)$ be the pdf of $T(\mathbf{X})$. The statistic $T(\mathbf{X})$ is a sufficient statistic for $\theta$ if and only if $\frac{f(\mathbf{x};\theta)}{q(T(\mathbf{X});\theta)}$ does not depend on $\theta$.
-  
 :::
 
 **Example**: Let $X_1,\dots, X_n$ be iid Binomial$(n=1,p)$ RVs. Consider $T(\mathbf{X}) =$
@@ -429,7 +428,7 @@ Our goal (still!) is to use $(X_1,\dots, X_n)$ to find the best (i.e., smallest 
 ::: callout-tip
 # Theorem: Lehmann-Scheffè
 
-Let $U$ be a complete sufficient statistic for $\theta$ and let $T(U)$ be any estimator based **only** on $U$. Then $T(U)$ is the unique, best unbiased estimator (UMVUE) of $\tau(\theta) = \hbox{E}[T(U)]$. 
+Let $U$ be a complete sufficient statistic for $\theta$ and let $T(U)$ be any estimator based **only** on $U$. Then $T(U)$ is the unique, best unbiased estimator (UMVUE) of $\tau(\theta) = \hbox{E}[T(U)]$.
 :::
 
 \
@@ -441,7 +440,6 @@ Let $U$ be a complete sufficient statistic for $\theta$ and let $T(U)$ be any es
 \
 \
 \
-
 
 FINALLY, we have a method for obtaining a best unbiased estimator:
 
@@ -504,7 +502,6 @@ $\hspace{20mm}$ **COMPLETENESS + UNBIASED ESTIMATOR = UMVUE**
 \
 \
 
-
 \newpage
 
 What if we can't find an unbiased estimator based on the complete sufficient statistic?
@@ -512,13 +509,10 @@ What if we can't find an unbiased estimator based on the complete sufficient sta
 ::: callout-tip
 # Theorem: Rao-Blackwell + Lehmann-Scheffè
 
-Let $U$ be a complete sufficient statistic for $\theta$, and let $h(X_1,\dots, X_n) = h(\mathbf{X})$ be **any** unbiased estimator of $\tau(\theta)$. Then
-$$
+Let $U$ be a complete sufficient statistic for $\theta$, and let $h(X_1,\dots, X_n) = h(\mathbf{X})$ be **any** unbiased estimator of $\tau(\theta)$. Then $$
 T(U) = \hbox{E}[h(\mathbf{X})|U]
-$$
-is the UMVUE of $\tau(\theta)$.
+$$ is the UMVUE of $\tau(\theta)$.
 :::
-
 
 **Example**: (continued) Let $X_1,\dots, X_n$ be iid Geometric$(p)$. We want the UMVUE of $p$.
 
@@ -576,4 +570,3 @@ is the UMVUE of $\tau(\theta)$.
 \
 \
 \
-

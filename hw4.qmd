@@ -19,31 +19,27 @@ format:
 
 Due Wednesday, 23 September 2026
 
-1.   Let $X_1,\dots,X_n$ be a random sample from the pdf
-    $$f(x;\theta) = \theta x^{-2}, \hbox{ \hspace{5mm}} 0<\theta\leq x < \infty.$$
-      a.  Find the method of moments estimator of $\theta$. (hint: don't overthink this).
-      b.  Find the maximum likelihood estimator of $\theta$.
-      
-2.  Let $X_1,\dots,X_n$ be iid with pdf
-$$
-f(x;\theta) = \frac{1}{\theta} \hbox{\hspace{5mm}} 0 \leq x \leq \theta; \theta > 0
-$$
-Estimate $\theta$ using both the method of moments and maximum likelihood.  Calculate the means and variances of the two estimators.  Which one should be preferred and why?
+1.  Let $X_1,\dots,X_n$ be a random sample from the pdf $$f(x;\theta) = \theta x^{-2}, \hbox{ \hspace{5mm}} 0<\theta\leq x < \infty.$$
 
-3.   Suppose that $X_1,\dots, X_n$ are a random sample from a Uniform$(0,2\theta+1)$ distribution.
-     a. Find the MLE of $\theta$.
-     b. Obtain the MLE of the **variance** of the underlying Uniform$(0,2\theta+1)$ distribution.
-     
-4.   Let $Y_1,\dots, Y_n$ be iid random variables from the population with pdf
-$$
-f(y; \beta) = \left \{ \begin{array}{ll} 3\beta^3 y^{-4} & y \geq \beta \\ 0 & \hbox{elsewhere} \end{array} \right .
-$$
-Find the MLE of $\beta$.
+    a.  Find the method of moments estimator of $\theta$. (hint: don't overthink this).
+    b.  Find the maximum likelihood estimator of $\theta$.
+
+2.  Let $X_1,\dots,X_n$ be iid with pdf
+    $$f(x;\theta) = \frac{1}{\theta} \hbox{\hspace{5mm}} 0 \leq x \leq \theta; \theta > 0$$
+    Estimate $\theta$ using both the method of moments and maximum likelihood. Calculate the means and variances of the two estimators. Which one should be preferred and why?
+
+3.  Suppose that $X_1,\dots, X_n$ are a random sample from a Uniform$(0,2\theta+1)$ distribution.
+
+    a.  Find the MLE of $\theta$.
+    b.  Obtain the MLE of the **variance** of the underlying Uniform$(0,2\theta+1)$ distribution.
+
+4.  Let $Y_1,\dots, Y_n$ be iid random variables from the population with pdf
+    $$f(y; \beta) = \left \{ \begin{array}{ll} 3\beta^3 y^{-4} & y \geq \beta \\ 0 & \hbox{elsewhere} \end{array} \right .$$
+    Find the MLE of $\beta$.
 
 5.  Suppose the random variables $Y_1,\dots, Y_n$ satisfy
-$$
-Y_i = \beta x_i + e_i, \hbox{\hspace{5mm}} i=1,\dots, n
-$$
-where $x_1,\dots, x_n$ are fixed constants and $e_1,\dots, e_n$ are iid N$(0,\sigma^2)$ random variables, with $\sigma^2$ unknown. 
+    $$Y_i = \beta x_i + e_i, \hbox{\hspace{5mm}} i=1,\dots, n$$
+    where $x_1,\dots, x_n$ are fixed constants and $e_1,\dots, e_n$ are iid N$(0,\sigma^2)$ random variables, with $\sigma^2$ unknown.
+
     a.  Find the MLE of $\beta$, and find E$(\hat \beta_{\hbox{\tiny{MLE}}})$.
     b.  Find the distribution (including parameters) of $\hat \beta_{\hbox{\tiny{MLE}}}$.

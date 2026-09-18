@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -33,13 +36,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="hw4_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="hw4_files/libs/quarto-html/anchor.min.js"></script>
 <link href="hw4_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="hw4_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="hw4_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="hw4_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="hw4_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="hw4_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="hw4_files/libs/bootstrap/bootstrap-215b371544c282197b31c8aa00ce3677.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -89,20 +92,14 @@ window.Quarto = {
 <li>Find the method of moments estimator of <span class="math inline">\(\theta\)</span>. (hint: don’t overthink this).</li>
 <li>Find the maximum likelihood estimator of <span class="math inline">\(\theta\)</span>.</li>
 </ol></li>
-<li><p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be iid with pdf <span class="math display">\[
-f(x;\theta) = \frac{1}{\theta} \hbox{\hspace{5mm}} 0 \leq x \leq \theta; \theta &gt; 0
-\]</span> Estimate <span class="math inline">\(\theta\)</span> using both the method of moments and maximum likelihood. Calculate the means and variances of the two estimators. Which one should be preferred and why?</p></li>
+<li><p>Let <span class="math inline">\(X_1,\dots,X_n\)</span> be iid with pdf <span class="math display">\[f(x;\theta) = \frac{1}{\theta} \hbox{\hspace{5mm}} 0 \leq x \leq \theta; \theta &gt; 0\]</span> Estimate <span class="math inline">\(\theta\)</span> using both the method of moments and maximum likelihood. Calculate the means and variances of the two estimators. Which one should be preferred and why?</p></li>
 <li><p>Suppose that <span class="math inline">\(X_1,\dots, X_n\)</span> are a random sample from a Uniform<span class="math inline">\((0,2\theta+1)\)</span> distribution.</p>
 <ol type="a">
 <li>Find the MLE of <span class="math inline">\(\theta\)</span>.</li>
 <li>Obtain the MLE of the <strong>variance</strong> of the underlying Uniform<span class="math inline">\((0,2\theta+1)\)</span> distribution.</li>
 </ol></li>
-<li><p>Let <span class="math inline">\(Y_1,\dots, Y_n\)</span> be iid random variables from the population with pdf <span class="math display">\[
-f(y; \beta) = \left \{ \begin{array}{ll} 3\beta^3 y^{-4} &amp; y \geq \beta \\ 0 &amp; \hbox{elsewhere} \end{array} \right .
-\]</span> Find the MLE of <span class="math inline">\(\beta\)</span>.</p></li>
-<li><p>Suppose the random variables <span class="math inline">\(Y_1,\dots, Y_n\)</span> satisfy <span class="math display">\[
-Y_i = \beta x_i + e_i, \hbox{\hspace{5mm}} i=1,\dots, n
-\]</span> where <span class="math inline">\(x_1,\dots, x_n\)</span> are fixed constants and <span class="math inline">\(e_1,\dots, e_n\)</span> are iid N<span class="math inline">\((0,\sigma^2)\)</span> random variables, with <span class="math inline">\(\sigma^2\)</span> unknown.</p>
+<li><p>Let <span class="math inline">\(Y_1,\dots, Y_n\)</span> be iid random variables from the population with pdf <span class="math display">\[f(y; \beta) = \left \{ \begin{array}{ll} 3\beta^3 y^{-4} &amp; y \geq \beta \\ 0 &amp; \hbox{elsewhere} \end{array} \right .\]</span> Find the MLE of <span class="math inline">\(\beta\)</span>.</p></li>
+<li><p>Suppose the random variables <span class="math inline">\(Y_1,\dots, Y_n\)</span> satisfy <span class="math display">\[Y_i = \beta x_i + e_i, \hbox{\hspace{5mm}} i=1,\dots, n\]</span> where <span class="math inline">\(x_1,\dots, x_n\)</span> are fixed constants and <span class="math inline">\(e_1,\dots, e_n\)</span> are iid N<span class="math inline">\((0,\sigma^2)\)</span> random variables, with <span class="math inline">\(\sigma^2\)</span> unknown.</p>
 <ol type="a">
 <li>Find the MLE of <span class="math inline">\(\beta\)</span>, and find E<span class="math inline">\((\hat \beta_{\hbox{\tiny{MLE}}})\)</span>.</li>
 <li>Find the distribution (including parameters) of <span class="math inline">\(\hat \beta_{\hbox{\tiny{MLE}}}\)</span>.</li>

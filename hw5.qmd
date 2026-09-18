@@ -1,0 +1,32 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Homework 5
+
+Due Wednesday, 30 September 2026
+
+1.  Suppose $X_1,\dots,X_n$ are a random sample from an exponential($\lambda$) population. Find the MLE of the population variance.
+
+2. Suppose $X_1,\dots, X_m$ represent final exam scores for non-calculus based introductory statistics (STAT 218) at UNL, and come from a normal distribution with mean $\mu_N$ and variance $\sigma^2$. Also, $Y_1,\dots, Y_n$ represent final exam scores for the analogous course at Iowa State and come from a normal distribution with mean $\mu_I$ and variance $\sigma^2$. If the $X_i$s and $Y_i$s are independent, find the MLE for the common variance $\sigma^2$. Assume $\mu_N$ and $\mu_I$ are unknown.
+
+3. A random sample of 100 Lincoln residents produced a total of 14 who favor allowing non-Lincoln residents to vote in Lincoln elections. An independent random sample of 100 non-Lincoln residents produced a total of 46 who favor allowing non-Lincoln residents to vote in Lincoln elections. Assume $p_L$ is the true proportion of Lincoln residents who favor allowing non-residents to vote and $p_{NL}$ is the true underlying proportion of non-Lincoln residents who favor allowing allowing non-residents to vote. If it's actually true that $p_L = p_{NL} = p$, find teh ML estimator and estimate of the common proportion $p$.
+
+4. The probability a randomly selected person from a population has hypoglycemia is $p$. Randomly selected people were testing until 15 were found to have hypoglycemia. Let $X$ be the total observed/tested number of people required to find the 15 with hypoglycemia. From previous studies of the population, we believe that $p$ comes from the beta$(\alpha,\beta)$ distribution where $\alpha$ and $\beta$ are assumed known. Find a Bayes estimator for $p$.
+
+5. On Homework #3, you determined that the Poisson distribution is not a reasonable assumption for the 13 bay anchovy larvae counts. One possible explanation for the failure of this assumption (and increased variance) is the failure of the assumption that the larvae are evenly distributed in the river. If the larvae tend to clump (common with biological data), the negative binomial$(r,p)$ (with mean $\mu=\frac{r(1-p)}{p}$ and variance $\mu + \frac{\mu^2}{r}$) is a reasonable alternative model. Note that this parameterization of the negative binomial has support $\{0,1,2,\dots\}$ and counts the number of failures observed before the $r^{th}$ success. For $\mu=\bar x$, what values of $r$ lead to simulated distributions that are consistent with the anchovy larvae data? Why? Support your answer with appropriate statistical evidence. (Hint: look at the documentation for the negative binomial function in base R, and use that to guide your simulation.)
+
+
