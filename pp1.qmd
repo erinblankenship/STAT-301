@@ -1,0 +1,66 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Practice Problems 1
+
+Not to be turned in, but may be helpful before the exam
+
+1. On Homework 4, you worked with the random variables $Y_1,\dots, Y_n$, where $$Y_i = \beta x_i + e_i, \hbox{\hspace{5mm}} i=1,\dots, n$$ with $x_1,\dots, x_n$ fixed constants and $e_1,\dots, e_n$ iid N$(0,\sigma^2)$ random variables, with $\sigma^2$ unknown. On HW4, you found the MLE of $\beta$, along with its distribution. Now consider the estimator $\tilde \beta = \sum_i Y_i/\sum_i x_i$. Which is a better estimator, $\hat \beta_{\hbox{\tiny{MLE}}}$ or $\tilde \beta$? Explain your answer, citing relevant statistical evidence.
+
+2. Also on Homework 4, you let $Y_1,\dots, Y_n$ be iid random variables from the population with pdf $$f(y; \beta) = \left \{ \begin{array}{ll} 3\beta^3 y^{-4} & y \geq \beta \\ 0 & \hbox{elsewhere} \end{array} \right .$$ and found the MLE of $\beta$.
+    a. Find the bias of $\hat \beta_{\hbox{\tiny{MLE}}}$.
+    b. Find MSE$(\hat \beta_{\hbox{\tiny{MLE}}})$.
+
+
+3. The *relative efficiency* is a way to compare the variances of two unbiased estimators. Suppose we have two estimators, $\hat\theta_1$ and $\hat\theta_2$, which are both unbiased for estimating $\theta$.  The efficiency of $\hat\theta_1$ relative to $\hat\theta_2$ is:
+$$
+\hbox{Efficiency}(\hat\theta_1,\hat\theta_2) = \frac{\hbox{Variance}(\hat\theta_2)}{\hbox{Variance}(\hat\theta_1)}
+$$
+
+	  a. Why do you think both estimators must be unbiased?
+	  b. Suppose that $X_1,\dots, X_n$ are a random sample from the distribution with pdf $f(x|\theta) = e^{-(x-\theta)}$ for $x > \theta$.
+	     i. Find an estimator $\hat\theta_1$ for $\theta$ using the method of moments. Is $\hat\theta_1$ unbiased?
+		   ii. Find an estimator $\hat\theta_2$ for $\theta$ using the method of maximum likelihood. Is $\hat\theta_2$ unbiased?
+		   iii. Adjust $\hat\theta_1$ and $\hat\theta_2$ so that they are unbiased.  Find the efficiency of the adjusted $\hat\theta_1$ relative to the adjusted $\hat\theta_2$.  What do you conclude?
+
+4. Consider a random sample $X_1,\dots, X_n$ from a uniform$(\theta_1,\theta_2)$ distribution. We are interested in estimating the mean of the uniform$(\theta_1,\theta_2)$ distribution, $\mu = \frac{\theta_1+\theta_2}{2}$.  
+
+   a. Two different estimators have been proposed:
+$$
+\hat\mu_1 = \bar X \hbox{\hspace{10mm} and \hspace{10mm}} \hat\mu_2 = \frac{X_{(1)} + X_{(n)}}{2}.
+$$
+Show that both $\hat\mu_1$ and $\hat\mu_2$ are unbiased estimators for $\mu$. 
+   b. WITHOUT calculating the variances of $\hat\mu_1$ and $\hat\mu_2$, which estimator do you think will be better? **Thoroughly** explain and justify your answer, using appropriate statistical evidence.
+
+5. Let $X_1,\dots, X_n$ be a random sample from the *Rayleigh* distribution (with parameter $\theta$). The pdf of the Rayleigh is:
+$$
+f(x;\theta) = \left(\frac{2x}{\theta}\right) e^{-x^2/\theta}
+$$
+for $x>\theta$. Show that $\sum_i X_i^2$ is sufficient for $\theta$.
+
+6. Let $X_1,\dots, X_n$ be a random sample from the *Pareto* distribution (with parameters $\alpha>0$ and $\beta>0$). The pdf of the Pareto is:
+$$
+f(x;\alpha,\beta) = \alpha \beta^\alpha x^{-(\alpha+1)}
+$$
+for $x \geq \beta$. Assuming that $\beta$ is known, show that $\prod_i X_i$ is sufficient for $\alpha$.
+
+7. Let $X_1,\dots,Xn$ be a random sample from the Uniform$(\theta_1,\theta_2)$ distribution. Show that $X_{(1)}$ and $X_{(n)}$ are jointly sufficient for $\theta_1$ and $\theta_2$.
+
+8. Let $X$ be a single observation from the binomial$(n,p)$ distribution.
+    a. Find the MLE of $p$, $\hat p_{\hbox{\tiny{MLE}}}$. Be sure to show/explain all work.
+    b. Show that $\hat p_{\hbox{\tiny{MLE}}}$ is an unbiased estimator of $p$.
+    c. To estimate the variance of $X$, we generally use $n\hat p_{\hbox{\tiny{MLE}}}(1-\hat   p_{\hbox{\tiny{MLE}}})$. Show that this typical estimator is a biased estimator of Var$(X)$.

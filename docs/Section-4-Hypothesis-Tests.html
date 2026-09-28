@@ -194,7 +194,12 @@ window.Quarto = {
   <li><a href="#errors" id="toc-errors" class="nav-link" data-scroll-target="#errors">Errors</a></li>
   </ul></li>
   <li><a href="#hypothesis-testing-strategy" id="toc-hypothesis-testing-strategy" class="nav-link" data-scroll-target="#hypothesis-testing-strategy"><span class="header-section-number">4.2</span> Hypothesis Testing Strategy</a></li>
-  <li><a href="#likelihood-ratio-tests" id="toc-likelihood-ratio-tests" class="nav-link" data-scroll-target="#likelihood-ratio-tests"><span class="header-section-number">4.3</span> Likelihood Ratio Tests</a></li>
+  <li><a href="#likelihood-ratio-tests" id="toc-likelihood-ratio-tests" class="nav-link" data-scroll-target="#likelihood-ratio-tests"><span class="header-section-number">4.3</span> Likelihood Ratio Tests</a>
+  <ul class="collapse">
+  <li><a href="#constructing-likelihood-ratio-tests" id="toc-constructing-likelihood-ratio-tests" class="nav-link" data-scroll-target="#constructing-likelihood-ratio-tests"><span class="header-section-number">4.3.1</span> Constructing Likelihood Ratio Tests</a></li>
+  <li><a href="#approximate-distribution-theory-for-lrts" id="toc-approximate-distribution-theory-for-lrts" class="nav-link" data-scroll-target="#approximate-distribution-theory-for-lrts"><span class="header-section-number">4.3.2</span> Approximate Distribution Theory for LRTs</a></li>
+  </ul></li>
+  <li><a href="#best-tests" id="toc-best-tests" class="nav-link" data-scroll-target="#best-tests"><span class="header-section-number">4.4</span> Best Tests</a></li>
   </ul>
 </nav>
     </div>
@@ -640,6 +645,8 @@ power(\theta) = \hspace{200mm}
 <p><br>
 <br>
 </p>
+<section id="constructing-likelihood-ratio-tests" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="constructing-likelihood-ratio-tests"><span class="header-section-number">4.3.1</span> Constructing Likelihood Ratio Tests</h3>
 <p>We can use the “likelihood” of the two hypotheses given the data to choose between the two alternatives. Most of the time, however, we don’t know <span class="math inline">\(\theta\)</span> so we’ll need to estimate it. What type of estimator do you think we’ll use?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -849,6 +856,63 @@ f_X(x) = \left \{ \begin{array}{ll} e^{-(x-\delta)} &amp; x \geq \delta \\ 0 &am
 <br>
 <br>
 </p>
+</section>
+<section id="approximate-distribution-theory-for-lrts" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="approximate-distribution-theory-for-lrts"><span class="header-section-number">4.3.2</span> Approximate Distribution Theory for LRTs</h3>
+<p>Under some “regularity” conditions on the distribution of the data, the large sample distribution of the LRT statistic is <span class="math inline">\(\chi^2\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Theorem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(X_1,\dots, X_n\)</span> are iid with pdf/pmf <span class="math inline">\(f(x;\theta)\)</span> and <span class="math inline">\(\lambda(x_1,\dots,x_n)\)</span> is the likelihood ratio test statistic for testing H<span class="math inline">\(_0: \theta \in \Theta_0\)</span> versus H<span class="math inline">\(_a: \theta \in \Theta_a\)</span>, then under regularity conditions on <span class="math inline">\(f(x;\theta)\)</span> under H<span class="math inline">\(_0\)</span>, as <span class="math inline">\(n \rightarrow \infty\)</span>: <span class="math display">\[
+-2\ln[\lambda(\mathbf{x})] \xrightarrow{D} \chi^2_{k}
+\]</span> where $k = $[# free parameters for <span class="math inline">\(\theta \in \Theta\)</span>] - [# free parameters for <span class="math inline">\(\theta \in \Theta_0\)</span>]. This yields the test with (approximate) significance level <span class="math inline">\(\alpha\)</span>: <span class="math display">\[
+\phi(X_1,\dots, X_n) = \left \{ \begin{array}{ll} 1 &amp; -2\ln[\lambda(\mathbf{x})] &gt; \chi^2_{k,\alpha} \\ 0 &amp; \hbox{elsewhere} \end{array} \right .
+\]</span></p>
+</div>
+</div>
+<p><strong>Example</strong> (con’t):</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p><strong>Example</strong> (Homework 5): A random sample of 100 Lincoln residents produced a total of 14 who favor allowing non-Lincoln residents to vote in Lincoln elections. An independent random sample of 100 non-Lincoln residents produced a total of 46 who favor allowing non-Lincoln residents to vote in Lincoln elections. Assume <span class="math inline">\(p_L\)</span> is the true proportion of Lincoln residents who favor allowing non-residents to vote and <span class="math inline">\(p_{NL}\)</span> is the true underlying proportion of non-Lincoln residents who favor allowing allowing non-residents to vote. Derive a LRT to determine if there is a significant difference between <span class="math inline">\(p_L\)</span> and <span class="math inline">\(p_{NL}\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+</section>
+</section>
+<section id="best-tests" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="best-tests"><span class="header-section-number">4.4</span> Best Tests</h2>
 
 
 </section>

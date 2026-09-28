@@ -444,6 +444,8 @@ In each case, how did you arrive at your conclusion?
 
 \newpage
 
+### Constructing Likelihood Ratio Tests
+
 We can use the "likelihood" of the two hypotheses given the data to choose between the two alternatives. Most of the time, however, we don't know $\theta$ so we'll need to estimate it.  What type of estimator do you think we'll use?
 
 ::: callout-tip
@@ -648,5 +650,64 @@ respectively. The parameter $\delta$ depends on the amount of time between when 
 \
 
 \newpage
+
+### Approximate Distribution Theory for LRTs
+
+Under some "regularity" conditions on the distribution of the data, the large sample distribution of the LRT statistic is $\chi^2$.
+
+::: callout-tip
+# Theorem
+
+If $X_1,\dots, X_n$ are iid with pdf/pmf $f(x;\theta)$ and $\lambda(x_1,\dots,x_n)$ is the likelihood ratio test statistic for testing H$_0: \theta \in \Theta_0$ versus H$_a: \theta \in \Theta_a$, then under regularity conditions on $f(x;\theta)$ under H$_0$, as $n \rightarrow \infty$:
+$$
+-2\ln[\lambda(\mathbf{x})] \xrightarrow{D} \chi^2_{k}
+$$
+where $k = $[\# free parameters for $\theta \in \Theta$] - [\# free parameters for $\theta \in \Theta_0$].  This yields the test with (approximate) significance level $\alpha$:
+$$
+\phi(X_1,\dots, X_n) = \left \{ \begin{array}{ll} 1 & -2\ln[\lambda(\mathbf{x})] > \chi^2_{k,\alpha} \\ 0 & \hbox{elsewhere} \end{array} \right .
+$$
+:::
+
+**Example** (con't): 
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example** (Homework 5): A random sample of 100 Lincoln residents produced a total of 14 who favor allowing non-Lincoln residents to vote in Lincoln elections. An independent random sample of 100 non-Lincoln residents produced a total of 46 who favor allowing non-Lincoln residents to vote in Lincoln elections. Assume $p_L$ is the true proportion of Lincoln residents who favor allowing non-residents to vote and $p_{NL}$ is the true underlying proportion of non-Lincoln residents who favor allowing allowing non-residents to vote. Derive a LRT to determine if there is a significant difference between $p_L$ and $p_{NL}$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+## Best Tests
+
+
 
 
