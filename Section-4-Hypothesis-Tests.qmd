@@ -423,6 +423,152 @@ More facts about $power(\theta)$
 
 \newpage
 
+**Example**: Suppose $X_1,\dots, X_n$ are iid N$(\theta,\sigma^2)$, where $\sigma^2$ is known. We want to test H$_0:\theta=\theta_0$ versus H$_a: \theta > \theta_0$. Consider the test $$
+\phi(X_1,\dots, X_n) = \left\{ \begin{array}{ll} 1 & \hbox{if } \frac{\bar X - \theta_0}{\sigma/\sqrt{n}} > c \\ 0 & \hbox{else} \end{array} \right.
+$$ where $c$ is chosen to give a particular P(Type I error). Suppose we want a Type I error rate of $\alpha=0.10$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+The power function is
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+Suppose $\theta_0=50$ and $\sigma^2=625$. The power function is shown for $n=5$ and $n=100$.
+
+![](PowerMeanOne.pdf){fig-align="center"}
+
+Again, note:
+
+- The power function increases in $\theta$.
+
+- $power(\theta_0) = 0.10 = \Phi(1.28) = \Phi(c)$
+
+- $power(-\infty)=0, power(\infty)=1$
+
+- $power'(\theta) = \frac{d}{d\theta}power(\theta)=\phi\left(\frac{\theta-\theta_0}{\sigma/\sqrt{n}} -c \right) \frac{\sqrt{n}}{\sigma}$
+
+This example is special in the sense that $\Theta_0 = \{\theta_0\}$. In other situations, $\Theta_0$ will not be a single point. This is important in the following definitions.
+
+::: callout-tip
+# Definition: size-$\alpha$ test
+
+A test $\phi$ is a **size-**$\alpha$ test if its power function satisfies $$
+\max_{\theta \in \Theta_0} power(\theta) = \alpha
+$$
+:::
+
+::: callout-tip
+# Definition: level-$\alpha$ test
+
+A test $\phi$ is a **level-**$\alpha$ test if its power function satisfies $$
+\max_{\theta \in \Theta_0} power(\theta) \leq \alpha
+$$
+:::
+
+A size-$\alpha$ test is a level-$\alpha$ test. For any set of null and alternative hypotheses:
+
+\begin{eqnarray*}
+\{\hbox{set of size-$\alpha$ tests}\} &\subset& \{\hbox{set of level-$\alpha$ tests}\} \\
+&\subset& \{\hbox{set of level-$\alpha^*$ tests, $\alpha^* \geq \alpha$}\}
+\end{eqnarray*}
+
+Another consider is the form of the hypotheses. A hypothesis that completely specifies the distribution of the data is a **simple hypothesis**. A hypothesis that does not completely specify the distribution of the data is a **composite hypothesis**.
+
+**Example**: Let $X_1,\dots, X_n$ be iid N$(\theta,\sigma^2)$, where $\sigma^2$ is known.
+
+1.  H$_0: \theta=\theta_0$ versus H$_a: \theta > \theta_0$
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+2.  H$_0: \theta=\theta_0$ versus H$_a: \theta = \theta_1$
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+3.  H$_0: \theta \leq \theta_0$ versus H$_a: \theta > \theta_0$
+
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+Why does this matter?
+
+- If H$_0$ is simple, then we can easily define
+
+\
+\
+\
+\
+\
+
+- If H$_0$ is composite, then
+
+\
+\
+\
+\
+\
+
+However, we can bound the probability of a Type I error for any $\theta \in \Theta_0$ by $$
+\max_{\theta \in \Theta_0} P(\phi(X_1,\dots,X_n)=1) = \max_{\theta \in \Theta_0} power(\theta) = \hbox{ size of the test }
+$$ It makes sense to require $$
+\max_{\theta \in \Theta_0} power(\theta) \leq \min_{\theta \in \Theta_a} power(\theta)
+$$
+
+This means the power of the test is at least as large as its level of significance. That is,
+
+\
+\
+\
+
+A test with this property is called **unbiased**.
+
+\newpage
+
 ## Likelihood Ratio Tests
 
 Using the power function, we can determine if one test is "better" than another, but how do we find tests in the first place?
@@ -446,23 +592,21 @@ In each case, how did you arrive at your conclusion?
 
 ### Constructing Likelihood Ratio Tests
 
-We can use the "likelihood" of the two hypotheses given the data to choose between the two alternatives. Most of the time, however, we don't know $\theta$ so we'll need to estimate it.  What type of estimator do you think we'll use?
+We can use the "likelihood" of the two hypotheses given the data to choose between the two alternatives. Most of the time, however, we don't know $\theta$ so we'll need to estimate it. What type of estimator do you think we'll use?
 
 ::: callout-tip
 # Definition: Likelihood Ratio Test
-Consider testing H$_0: \theta \in \Theta_0$ versus H$_a: \theta \in \Theta_a$.  The likelihood ratio test statistic is 
-\
+
+Consider testing H$_0: \theta \in \Theta_0$ versus H$_a: \theta \in \Theta_a$. The likelihood ratio test statistic is\
 \
 \
 $$
 \lambda(x_1,\dots,x_n) = \hbox{\hspace{150mm}}
-$$
-\
+$$\
 \
 \
 
 The **likelihood ratio test** (LRT) is any test that has a rejection region of the form $\lambda(x_1,\dots,x_n) \leq k$, where is $k$ is chosen to achieve the desired signficance level, with $0 \leq k \leq 1$. That is, the LRT has the form $\phi(X_1,\dots,X_n) = \left\{\begin{array}{ll} 1 & \lambda(x_1,\dots,x_n) \leq k \\ 0 & \hbox{elsewhere}\end{array}\right.$.
-
 :::
 
 What's in this ratio?
@@ -491,7 +635,7 @@ What's in this ratio?
 
 And comparing them does what, exactly?
 
-- Why must $\lambda(X_1,\dots,X_n) \leq 1$? 
+- Why must $\lambda(X_1,\dots,X_n) \leq 1$?
 
 \
 \
@@ -518,18 +662,17 @@ And comparing them does what, exactly?
 
 ::: callout-tip
 # Finding LRTs
+
 1.  Specify hypotheses: H$_0: \theta \in \Theta_0$ versus H$_a: \theta \in \Theta_a$
-2.  Specify the likelihood function: 
-$$L(\theta|x_1,\dots,x_n) = L(\theta|\mathbf{x}) = f(\mathbf{x};\theta) = f(x_1,\dots,x_n;\theta) = \prod_{i=1}^n f(x_i;\theta)$$
+2.  Specify the likelihood function: $$L(\theta|x_1,\dots,x_n) = L(\theta|\mathbf{x}) = f(\mathbf{x};\theta) = f(x_1,\dots,x_n;\theta) = \prod_{i=1}^n f(x_i;\theta)$$
 3.  Find $\max_{\theta \in \Theta_0} L(\theta|\mathbf{x}) = L(\hat\theta_0|\mathbf{x})$
 4.  Find $\max_{\theta \in \Theta} L(\theta|\mathbf{x}) = L(\hat\theta_{\hbox{\tiny{MLE}}}|\mathbf{x})$
 5.  Calculate $\lambda(\mathbf{x}) = \frac{L(\hat\theta_0|\mathbf{x})}{L(\hat\theta_{\hbox{\tiny{MLE}}}|\mathbf{x})}$
 6.  Find a critical value for $\lambda(\mathbf{x})$ to ensure a signficance level of $\alpha$
 7.  Carry out the test and report the conclusion **in context**
-
 :::
 
-**Example**: The diameters of table legs produced by a machine are RVs distributed as N$(\mu,0.01)$.  In order to correctly fit the table into which they will be inserted, the legs should have a mean diameter of 2.5 inches. The operator running the machine suspects that the machine is malfunctioning.
+**Example**: The diameters of table legs produced by a machine are RVs distributed as N$(\mu,0.01)$. In order to correctly fit the table into which they will be inserted, the legs should have a mean diameter of 2.5 inches. The operator running the machine suspects that the machine is malfunctioning.
 
 - What is(are) the population(s) of interest?
 
@@ -574,10 +717,9 @@ $$L(\theta|x_1,\dots,x_n) = L(\theta|\mathbf{x}) = f(\mathbf{x};\theta) = f(x_1,
 \
 \
 
-
 \newpage
 
-- The machine operator selects a random sample of $n=16$ table legs, and observes a sample mean of $\bar x = 2.48$ inches.  Does the machine need to fixed?  Use $\alpha=0.1$.
+- The machine operator selects a random sample of $n=16$ table legs, and observes a sample mean of $\bar x = 2.48$ inches. Does the machine need to fixed? Use $\alpha=0.1$.
 
 \
 \
@@ -588,11 +730,9 @@ $$L(\theta|x_1,\dots,x_n) = L(\theta|\mathbf{x}) = f(\mathbf{x};\theta) = f(x_1,
 \
 \
 
-**Example**: Let the random variable $X$ denote the lifetime of cut roses delivered by a florist (in days).  Suppose $X$ follows the distribution with pdf and CDF
-$$
+**Example**: Let the random variable $X$ denote the lifetime of cut roses delivered by a florist (in days). Suppose $X$ follows the distribution with pdf and CDF $$
 f_X(x) = \left \{ \begin{array}{ll} e^{-(x-\delta)} & x \geq \delta \\ 0 & \hbox{elsewhere} \end{array} \right . \hbox{\hspace{5mm} and \hspace{5mm}} F_X(x) = \left \{ \begin{array}{ll} 1-e^{-(x-\delta)} &x \geq \delta \\ 0 & \hbox{elsewhere} \end{array} \right .,
-$$
-respectively. The parameter $\delta$ depends on the amount of time between when the roses were harvested and when they were delivered.  Based on historical data, you believe that, for a particular variety of rose, $\delta=5$. You've heard an old story that adding 7-UP to the water will make the roses last longer, and want to test this theory.  That is, you want to see if adding 7-UP to the water will increase the value of $\delta$. Construct a LRT to investigate this hypothesis.
+$$ respectively. The parameter $\delta$ depends on the amount of time between when the roses were harvested and when they were delivered. Based on historical data, you believe that, for a particular variety of rose, $\delta=5$. You've heard an old story that adding 7-UP to the water will make the roses last longer, and want to test this theory. That is, you want to see if adding 7-UP to the water will increase the value of $\delta$. Construct a LRT to investigate this hypothesis.
 
 \
 \
@@ -624,7 +764,7 @@ respectively. The parameter $\delta$ depends on the amount of time between when 
 
 \newpage
 
-**Example**:  During the first year of its existence, the roundabout at 14th and Superior averaged about 2 crashes per week. To help change the number of accidents, the city put up barriers to remove one lane of traffic (3 lanes were reduced to 2).  After those barriers were installed, there were a total of 3 accidents in the first 5 weeks of operation. Does it appear that the barriers worked to change the number of accidents? Use $\alpha=0.05$.
+**Example**: During the first year of its existence, the roundabout at 14th and Superior averaged about 2 crashes per week. To help change the number of accidents, the city put up barriers to remove one lane of traffic (3 lanes were reduced to 2). After those barriers were installed, there were a total of 3 accidents in the first 5 weeks of operation. Does it appear that the barriers worked to change the number of accidents? Use $\alpha=0.05$.
 
 - What is(are) the population(s) of interest?
 
@@ -658,17 +798,14 @@ Under some "regularity" conditions on the distribution of the data, the large sa
 ::: callout-tip
 # Theorem
 
-If $X_1,\dots, X_n$ are iid with pdf/pmf $f(x;\theta)$ and $\lambda(x_1,\dots,x_n)$ is the likelihood ratio test statistic for testing H$_0: \theta \in \Theta_0$ versus H$_a: \theta \in \Theta_a$, then under regularity conditions on $f(x;\theta)$ under H$_0$, as $n \rightarrow \infty$:
-$$
+If $X_1,\dots, X_n$ are iid with pdf/pmf $f(x;\theta)$ and $\lambda(x_1,\dots,x_n)$ is the likelihood ratio test statistic for testing H$_0: \theta \in \Theta_0$ versus H$_a: \theta \in \Theta_a$, then under regularity conditions on $f(x;\theta)$ under H$_0$, as $n \rightarrow \infty$: $$
 -2\ln[\lambda(\mathbf{x})] \xrightarrow{D} \chi^2_{k}
-$$
-where $k = $[\# free parameters for $\theta \in \Theta$] - [\# free parameters for $\theta \in \Theta_0$].  This yields the test with (approximate) significance level $\alpha$:
-$$
+$$ where \$k = \$\[# free parameters for $\theta \in \Theta$\] - \[# free parameters for $\theta \in \Theta_0$\]. This yields the test with (approximate) significance level $\alpha$: $$
 \phi(X_1,\dots, X_n) = \left \{ \begin{array}{ll} 1 & -2\ln[\lambda(\mathbf{x})] > \chi^2_{k,\alpha} \\ 0 & \hbox{elsewhere} \end{array} \right .
 $$
 :::
 
-**Example** (con't): 
+**Example** (con't):
 
 \
 \
@@ -708,6 +845,440 @@ $$
 
 ## Best Tests
 
+With estimation, we devised a method for constructing "best" estimators. With tests, what makes one test "better" than another? Can we devise a method for identifying and deriving "best" tests?
 
+We'll start with simple versus simple hypotheses. We'll consider the task of specifying a rejection region such that it has the probability $\alpha$ when H$_0$ is true (Type I error) and the largest possible probability (i.e., highest power) when H$_a$ is true.
 
+Let's think about rejection regions $R$ having the form $$
+\left \{ (x_1,\dots, x_n): \frac{f(x_1,\dots,x_n|\theta_1)}{f(x_1,\dots,x_n|\theta_0)} > k \right \}
+$$
+
+Why does this provide a good rejection region? Let's look at a simple example.
+
+**Example**: Suppose $X_1,\dots, X_5 \sim$ Binomial(1,$p$). We want to test H$_0: p=0.2$ versus H$_a: p=0.5$ with $\alpha=0.35$. We'll base our test on $\sum_{i=1}^5 X_i \sim$ Binomial$(5,p)$.
+
+|                         | $x=0$  | $x=1$  | $x=2$  | $x=3$  | $x=4$  | $x=5$  |
+|-------------------------|--------|--------|--------|--------|--------|--------|
+| $P(\sum X_i = x|p=0.2)$ | 0.3277 | 0.4096 | 0.2048 | 0.0512 | 0.0064 | 0.0003 |
+| $P(\sum X_i = x|p=0.5)$ | 0.0313 | 0.1563 | 0.3125 | 0.3125 | 0.1562 | 0.0312 |
+
+Let's consider 2 options for the rejection region.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+When we consider the power-to-level ratio:
+
+|   | $x=0$ | $x=1$ | $x=2$ | $x=3$ | $x=4$ | $x=5$ |
+|-------------------|-----------|-----------|-----------|-----------|-----------|-----------|
+| $P(\sum X_i = x|p=0.2)$ | 0.3277 | 0.4096 | 0.2048 | 0.0512 | 0.0064 | 0.0003 |
+| $P(\sum X_i = x|p=0.5)$ | 0.0313 | 0.1563 | 0.3125 | 0.3125 | 0.1562 | 0.0312 |
+| $\frac{P(\sum X_i = x|p=0.5)}{P(\sum X_i = x|p=0.2)}$ | 0.0955 | 0.3812 | 1.5259 | 6.1035 | 24.406 | 104 |
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+### The Neyman-Pearson Lemma
+
+This idea of constructing the rejection region by including points that contribute the most power per level is the motivation for the **Neyman-Pearson Lemma**.
+
+\
+
+::: callout-tip
+# Theorem: Neyman-Pearson Lemma
+
+Consider testing H$_0: \theta=\theta_0$ versus H$_a: \theta = \theta_1$, where $(X_1,\dots, X_n) \sim f(x_1,\dots, x_n|\theta)$. For a constant $k>0$, let
+$$
+\phi(X_1,\dots, X_n) = \left \{ \begin{array}{ll} 1 & f(x_1,\dots,x_n|\theta_1) > k f(x_1,\dots, x_n|\theta_0) \\ 0 & f(x_1,\dots,x_n|\theta_1) < k f(x_1,\dots, x_n|\theta_0) \end{array} \right .
+$$
+and let $\alpha$ be defined as
+$$
+\alpha = P(\phi(X_1,\dots, X_n) = 1 |\theta=\theta_0).
+$$
+Then, $\phi(X_1,\dots, X_n)$ is most powerful for testing H$_0$ versus H$_a$ at level $\alpha$.
+:::
+
+\newpage
+
+**Example**: Let $X_1,\dots,X_n$ be a random sample from the exponential$(\theta)$ distribution. We want to test H$_0: \theta = \theta_0$ versus H$_a: \theta=\theta_1$ where $\theta_1 > \theta_0$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be Normal$(\mu,\sigma^2)$ random variables where $\sigma^2$ is known. We want to test H$_0: \mu = \mu_0$ versus H$_a: \mu=\mu_1$ where $\mu_1 > \mu_0$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+The test we just derived does not depend on $\mu_1$ The **same** test is most powerful for every $\mu_1 > \mu_0$ (though the power will differ for different values of $\mu_1$). If a test has this property it is called **uniformly most powerful** (UMP).
+
+::: callout-tip
+# Definition: Uniformly Most Powerful (UMP) Tests
+
+A test is a **uniformly most powerful** (UMP) test of size $\alpha$ if it has size $\alpha$ and if for all parameter values in the alternative spae it has maximum power relative to all rejection regions of size $\alpha$.
+:::
+
+In practice, the Neyman-Pearson Lemma may be used to find UMP tests for composite alternative hypotheses by first finding the NP test for a particular simple alternative, and then showing the test does not depend on the specified alternative value.
+
+**Example**: Let $X_1,\dots, X_n$ be Normal$(\mu,\sigma^2)$ random variables where $\sigma^2$ is known. We want to test H$_0: \mu = \mu_0$ versus H$_a: \mu=\mu_1$ where $\mu_1 > \mu_0$.
+
+\
+\
+\
+\
+\
+\
+
+Like MLEs (and LRTs), the NP Lemma guarantees that most powerful tests (if they exist) will be functions of sufficient statistics. The NP Lemma says the test
+$$
+\phi(X_1,\dots,X_n) = \left \{ \begin{array}{ll} 1 & f(x_1,\dots,x_n|\theta_1) > k f(x_1,\dots, x_n|\theta_0) \\ 0 & f(x_1,\dots,x_n|\theta_1) < k f(x_1,\dots, x_n|\theta_0) \end{array} \right .
+$$
+is most powerful.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage 
+
+### Extending the Neyman-Pearson Lemma
+
+We've already seen that the Neyman-Pearson Lemma may be used to find UMP tests for composite alternative hypotheses by first finding the most powerful test for a particular alternative and then showing that it does not depend on the specific alternative value. What about composite nulls?
+
+\
+
+::: callout-tip
+# Theorem: Extending the Neyman-Pearson Lemma
+
+Let $\phi(X_1,\dots, X_n)$ be a size-$\alpha$ NP test for H$_0:\theta=\theta_0$ versus H$_a: \theta=\theta_1$ ($\theta_1 > \theta_0$) where E$(\phi(X_1,\dots,X_n|\theta_0)=\alpha$. Suppose the test does not depend on $\theta_1$.
+
+- 1$^{st}$ extension: The NP test is uniformly most powerful for testing H$_0: \theta = \theta_0$ versus H$_a: \theta > \theta_0$ (its size is still $\alpha$).
+
+- 2$^{nd}$ extension: If in addition the power function of NP best test is non-decreasing for all $\theta$, then the test is UMP size-$\alpha$ for H$_0: \theta \leq \theta_0$ versus H$_a: \theta > \theta_0$.
+:::
+
+\
+
+**Example**: Let $X_1,\dots, X_n$ be Normal$(\mu,\sigma^2)$ random variables where $\sigma^2$ is known.
+
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots,X_n$ be a random sample from pdf $f(x|\lambda)=\lambda e^{-\lambda x}$ for $x > 0$. We want to test H$_0: \lambda \leq \lambda_0$ versus H$_a: \lambda > \lambda_0$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+What if we want to test H$_0: \theta \geq \theta_0$ versus H$_a: \theta < \theta_0$? What needs to change in the extensions?
+
+\
+
+::: callout-tip
+# Theorem: Extending the Neyman-Pearson Lemma (Less Than)
+
+Let $\phi(X_1,\dots, X_n)$ be a size-$\alpha$ NP test for H$_0:\theta=\theta_0$ versus H$_a: \theta=\theta_1$ ($\theta_1 \hbox{\hspace{8mm}} \theta_0$) where E$(\phi(X_1,\dots,X_n|\theta_0)=\alpha$. Suppose the test does not depend on $\theta_1$.
+
+- 1$^{st}$ extension: The NP test is uniformly most powerful for testing H$_0: \theta = \theta_0$ versus H$_a: \theta < \theta_0$ (its size is still $\alpha$).
+
+- 2$^{nd}$ extension: If in addition the power function of NP best test is \underline{\hspace{30mm}} for all $\theta$, then the test is UMP size-$\alpha$ for H$_0: \theta \geq \theta_0$ versus H$_a: \theta < \theta_0$.
+:::
+
+\
+
+If the NP Lemma and its extensions give us a method for finding most powerful tests, why would we ever do anything different? Why even bother with LRTs and others? **UMP tests don't always exist.**
+
+**Example**: Let $X_1,\dots, X_n$ be Normal$(\mu,\sigma^2)$ random variables where $\sigma^2$ is known.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+### Monotone Likelihood Ratios
+
+The monotone likelihood ratio is a condition that, when it holds, lets us find UMP tests for 1-sided alternatives without going through the NP Lemma + Extensions process.
+
+::: callout-tip
+# Definition: Monotone Likelihood Ratio
+
+A joint pdf/pmf $f(x_1,\dots,x_n|\theta)$ has a **monotone likelihood ratio** (MLR) in the statistic $T=t(X_1,\dots,X_n)$ if, for any two values of the parameter $\theta_2 > \theta_1$, the ratio $f(x_1,\dots,x_n|\theta_2)/f(x_1,\dots,x_n|\theta_1)$ depends on $(x_1,\dots,x_n)$ only through the function $t(x_1,\dots,x_n)$ and this ratio is a non-decreasing function of $t(x_1,\dots,x_n)$.
+\
+
+Note: if the ratio is non-increasing in $t(x_1,\dots,x_n)$ it can be made non-decreasing.
+:::
+
+**Example**: Let $X_1,\dots, X_n$ be iid Poisson$(\lambda)$ random variables.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+::: callout-tip
+# Theorem: Karlin-Rubin (Greater than)
+
+Consider testing H$_0:\theta \leq \theta_0$ versus H$_a: \theta > \theta_1$. Suppose that $T$ is a sufficient statistic for $\theta$ and the family of pdfs/pmfs of $T$ has an MLR. Then, for any $t_0$, the test that rejects H$_0$ if and only if $T > t_0$ is a UMP level-$\alpha$ test, where $\alpha = P(T > t_0|\theta_0)$.
+:::
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be iid Poisson$(\lambda)$ random variables. We want to test H$_0: \lambda \leq \lambda_0$ versus H$_a: \lambda > \lambda_0$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots,X_n$ be a random sample from pdf $f(x|\lambda)=\lambda e^{-\lambda x}$ for $x > 0$. We want to test H$_0: \lambda \leq \lambda_0$ versus H$_a: \lambda > \lambda_0$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+MLRs are another reason to love exponential families.
+
+::: callout-tip
+# Theorem: MLRs and Exponential Families
+
+If $(X_1,\dots,X_n)$ has a distribution in the one-parameter exponential family, i.e. has pdf
+$$
+f(x|\theta) = c(\theta)h(x)\exp\{w(\theta)t(x)\}
+$$
+where $w(\cdot)$ is a non-decreasing function, then the distribution of $(X_1,\dots,X_n)$ has a MLR in $T(X_1,\dots,X_n)=\sum_{i=1}^n t(x_i)$.
+:::
+
+**Example**: Let $X_1,\dots,X_n$ be a random sample from pdf $f(x|\lambda)=\lambda e^{-\lambda x}$ for $x > 0$.
+
+\
+\
+\
+\
+\
+\
+\
+\
+
+\newpage
+
+**Example**: Let $X_1,\dots, X_n$ be a random sample from the beta distribution with $\alpha$ unknown and $\beta$ known.
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+The problem of testing H$_0:\theta \geq \theta_0$ versus H$_a: \theta < \theta_0$ can also be handled by the MLR approach, but the inequalities in the Karlin-Rubin Theorem must be reversed.
+
+::: callout-tip
+# Theorem: Karlin-Rubin (Less than)
+
+Consider testing H$_0:\theta \geq \theta_0$ versus H$_a: \theta < \theta_1$. Suppose that $T$ is a sufficient statistic for $\theta$ and the family of pdfs/pmfs of $T$ has an MLR. Then, for any $t_0$, the test that rejects H$_0$ if and only if $T < t_0$ is a UMP level-$\alpha$ test, where $\alpha = P(T < t_0|\theta_0)$.
+:::
+
+\newpage
+
+## P-values
+
+So far, we've been dealing with tests with a pre-specified significance level.  That is, our tests have the form $\phi(X_1,\dots,X_n) = \left \{ \begin{array}{ll} 1 & T(X_1,\dots,X_n) > k_{\alpha} \\ 0 & T(X_1,\dots,X_n) \leq k_{\alpha} \end{array}\right.$ where $\alpha=P(T>k_{\alpha}|\hbox{H}_0 \hbox{ true})$.  The numerical value of $\alpha$ is chosen arbitrarily (or by tradition), and different researchers may disagree about what value of $\alpha$ should be used.  This can lead to an uncomfortable situation: two researchers come to different conclusions, even with the same set of data. However, if the researchers use the same test statistic, we can overcome this problem by reporting the results in terms of the **p-value** of the test.
+
+::: callout-tip
+# Definition: p-value
+
+If $W(X_1,\dots,X_n)$ is a test statistic, the **p-value**, or **attained significance level**, is the smallest level of significance $\alpha$ for which the observed data indicate that the null hypothesis should be rejected. The smaller the p-value, the more compelling is the evidence that the null hypothesis should be rejected.
+:::
+
+**Example**: Let's go back to the 14th and Superior roundabout example. In that case, our LRT was
+$$
+\phi_\alpha(X_1,\dots,X_n) = \left \{ \begin{array}{ll} 1 & W(X_1,\dots,X_n) > k_{\alpha} \\ 0 & W(X_1,\dots,X_n) < k_{\alpha}   \end{array} \right . .
+$$
+Previously, we set $\alpha=0.05$.  We could have chosen many different signficance levels:
+
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+
+Notice that as $\alpha$ decreases, the critical value $k_{\alpha}$ increases, making it more difficult to reject the null hypothesis.  This makes sense, because we are reducing our chance of making a Type I error.  With the data observed, our test statistic was 6.776, and at $\alpha=0.05$, we rejected the null hypothesis.  However, if we had used a different $\alpha$ value, we would have reached a different conclusion.
+
+To avoid this issue, p-values are often reported so that researchers (or, maybe more importantly, consumers of the research) can reach their own conclusions about the significance of the test results. The p-value of the test is the smallest value of $\alpha$ for which we would reject H$_0$.  That is, it is the smallest value of $\alpha$ for which $\phi(X_1,\dots,X_n) = 1$.  For example, if our p-value=0.024, then 0.024 is the smallest value $\alpha$ could be, and we would still reject H$_0$.  For a test with significance level $\alpha$, we could re-write the test rule as
+$$
+\phi_ \alpha(X_1,\dots,X_n) = \left \{ \begin{array}{ll} 1 & \hbox{p-value} < \alpha \\ 0 & \hbox{p-value} > \alpha \end{array} \right .
+$$
+P-values are convenient because the end user of the test doesn't need to look up critical values in a table. Note that smaller p-values indicate greater evidence against H$_0$ and larger p-values indicate lesser evidence against H$_0$.
+
+There are two main ways to calculate p-values:
+
+1.  Reference distribution of the test statistic, $T$.
+
+\
+\
+\
+\
+\
+\
+
+2.  Simulation 
+
+\
+\
+\
+\
+\
+\
+\
+\
 

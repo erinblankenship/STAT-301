@@ -199,7 +199,13 @@ window.Quarto = {
   <li><a href="#constructing-likelihood-ratio-tests" id="toc-constructing-likelihood-ratio-tests" class="nav-link" data-scroll-target="#constructing-likelihood-ratio-tests"><span class="header-section-number">4.3.1</span> Constructing Likelihood Ratio Tests</a></li>
   <li><a href="#approximate-distribution-theory-for-lrts" id="toc-approximate-distribution-theory-for-lrts" class="nav-link" data-scroll-target="#approximate-distribution-theory-for-lrts"><span class="header-section-number">4.3.2</span> Approximate Distribution Theory for LRTs</a></li>
   </ul></li>
-  <li><a href="#best-tests" id="toc-best-tests" class="nav-link" data-scroll-target="#best-tests"><span class="header-section-number">4.4</span> Best Tests</a></li>
+  <li><a href="#best-tests" id="toc-best-tests" class="nav-link" data-scroll-target="#best-tests"><span class="header-section-number">4.4</span> Best Tests</a>
+  <ul class="collapse">
+  <li><a href="#the-neyman-pearson-lemma" id="toc-the-neyman-pearson-lemma" class="nav-link" data-scroll-target="#the-neyman-pearson-lemma"><span class="header-section-number">4.4.1</span> The Neyman-Pearson Lemma</a></li>
+  <li><a href="#extending-the-neyman-pearson-lemma" id="toc-extending-the-neyman-pearson-lemma" class="nav-link" data-scroll-target="#extending-the-neyman-pearson-lemma"><span class="header-section-number">4.4.2</span> Extending the Neyman-Pearson Lemma</a></li>
+  <li><a href="#monotone-likelihood-ratios" id="toc-monotone-likelihood-ratios" class="nav-link" data-scroll-target="#monotone-likelihood-ratios"><span class="header-section-number">4.4.3</span> Monotone Likelihood Ratios</a></li>
+  </ul></li>
+  <li><a href="#p-values" id="toc-p-values" class="nav-link" data-scroll-target="#p-values"><span class="header-section-number">4.5</span> P-values</a></li>
   </ul>
 </nav>
     </div>
@@ -625,6 +631,153 @@ power(\theta) = \hspace{200mm}
 <br>
 <br>
 </p>
+<p><strong>Example</strong>: Suppose <span class="math inline">\(X_1,\dots, X_n\)</span> are iid N<span class="math inline">\((\theta,\sigma^2)\)</span>, where <span class="math inline">\(\sigma^2\)</span> is known. We want to test H<span class="math inline">\(_0:\theta=\theta_0\)</span> versus H<span class="math inline">\(_a: \theta &gt; \theta_0\)</span>. Consider the test <span class="math display">\[
+\phi(X_1,\dots, X_n) = \left\{ \begin{array}{ll} 1 &amp; \hbox{if } \frac{\bar X - \theta_0}{\sigma/\sqrt{n}} &gt; c \\ 0 &amp; \hbox{else} \end{array} \right.
+\]</span> where <span class="math inline">\(c\)</span> is chosen to give a particular P(Type I error). Suppose we want a Type I error rate of <span class="math inline">\(\alpha=0.10\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>The power function is</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>Suppose <span class="math inline">\(\theta_0=50\)</span> and <span class="math inline">\(\sigma^2=625\)</span>. The power function is shown for <span class="math inline">\(n=5\)</span> and <span class="math inline">\(n=100\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><embed src="PowerMeanOne.pdf" class="img-fluid quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<p>Again, note:</p>
+<ul>
+<li><p>The power function increases in <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p><span class="math inline">\(power(\theta_0) = 0.10 = \Phi(1.28) = \Phi(c)\)</span></p></li>
+<li><p><span class="math inline">\(power(-\infty)=0, power(\infty)=1\)</span></p></li>
+<li><p><span class="math inline">\(power'(\theta) = \frac{d}{d\theta}power(\theta)=\phi\left(\frac{\theta-\theta_0}{\sigma/\sqrt{n}} -c \right) \frac{\sqrt{n}}{\sigma}\)</span></p></li>
+</ul>
+<p>This example is special in the sense that <span class="math inline">\(\Theta_0 = \{\theta_0\}\)</span>. In other situations, <span class="math inline">\(\Theta_0\)</span> will not be a single point. This is important in the following definitions.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Definition: size-<span class="math inline">\(\alpha\)</span> test
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A test <span class="math inline">\(\phi\)</span> is a <strong>size-</strong><span class="math inline">\(\alpha\)</span> test if its power function satisfies <span class="math display">\[
+\max_{\theta \in \Theta_0} power(\theta) = \alpha
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Definition: level-<span class="math inline">\(\alpha\)</span> test
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A test <span class="math inline">\(\phi\)</span> is a <strong>level-</strong><span class="math inline">\(\alpha\)</span> test if its power function satisfies <span class="math display">\[
+\max_{\theta \in \Theta_0} power(\theta) \leq \alpha
+\]</span></p>
+</div>
+</div>
+<p>A size-<span class="math inline">\(\alpha\)</span> test is a level-<span class="math inline">\(\alpha\)</span> test. For any set of null and alternative hypotheses:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\{\hbox{set of size-$\alpha$ tests}\} &amp;\subset&amp; \{\hbox{set of level-$\alpha$ tests}\} \\
+&amp;\subset&amp; \{\hbox{set of level-$\alpha^*$ tests, $\alpha^* \geq \alpha$}\}
+\end{eqnarray*}\]</span></p>
+<p>Another consider is the form of the hypotheses. A hypothesis that completely specifies the distribution of the data is a <strong>simple hypothesis</strong>. A hypothesis that does not completely specify the distribution of the data is a <strong>composite hypothesis</strong>.</p>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots, X_n\)</span> be iid N<span class="math inline">\((\theta,\sigma^2)\)</span>, where <span class="math inline">\(\sigma^2\)</span> is known.</p>
+<ol type="1">
+<li>H<span class="math inline">\(_0: \theta=\theta_0\)</span> versus H<span class="math inline">\(_a: \theta &gt; \theta_0\)</span></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<ol start="2" type="1">
+<li>H<span class="math inline">\(_0: \theta=\theta_0\)</span> versus H<span class="math inline">\(_a: \theta = \theta_1\)</span></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<ol start="3" type="1">
+<li>H<span class="math inline">\(_0: \theta \leq \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &gt; \theta_0\)</span></li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>Why does this matter?</p>
+<ul>
+<li>If H<span class="math inline">\(_0\)</span> is simple, then we can easily define</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<ul>
+<li>If H<span class="math inline">\(_0\)</span> is composite, then</li>
+</ul>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>However, we can bound the probability of a Type I error for any <span class="math inline">\(\theta \in \Theta_0\)</span> by <span class="math display">\[
+\max_{\theta \in \Theta_0} P(\phi(X_1,\dots,X_n)=1) = \max_{\theta \in \Theta_0} power(\theta) = \hbox{ size of the test }
+\]</span> It makes sense to require <span class="math display">\[
+\max_{\theta \in \Theta_0} power(\theta) \leq \min_{\theta \in \Theta_a} power(\theta)
+\]</span></p>
+<p>This means the power of the test is at least as large as its level of significance. That is,</p>
+<p><br>
+<br>
+<br>
+</p>
+<p>A test with this property is called <strong>unbiased</strong>.</p>
 </section>
 <section id="likelihood-ratio-tests" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="likelihood-ratio-tests"><span class="header-section-number">4.3</span> Likelihood Ratio Tests</h2>
@@ -913,6 +1066,524 @@ f_X(x) = \left \{ \begin{array}{ll} e^{-(x-\delta)} &amp; x \geq \delta \\ 0 &am
 </section>
 <section id="best-tests" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="best-tests"><span class="header-section-number">4.4</span> Best Tests</h2>
+<p>With estimation, we devised a method for constructing “best” estimators. With tests, what makes one test “better” than another? Can we devise a method for identifying and deriving “best” tests?</p>
+<p>We’ll start with simple versus simple hypotheses. We’ll consider the task of specifying a rejection region such that it has the probability <span class="math inline">\(\alpha\)</span> when H<span class="math inline">\(_0\)</span> is true (Type I error) and the largest possible probability (i.e., highest power) when H<span class="math inline">\(_a\)</span> is true.</p>
+<p>Let’s think about rejection regions <span class="math inline">\(R\)</span> having the form <span class="math display">\[
+\left \{ (x_1,\dots, x_n): \frac{f(x_1,\dots,x_n|\theta_1)}{f(x_1,\dots,x_n|\theta_0)} &gt; k \right \}
+\]</span></p>
+<p>Why does this provide a good rejection region? Let’s look at a simple example.</p>
+<p><strong>Example</strong>: Suppose <span class="math inline">\(X_1,\dots, X_5 \sim\)</span> Binomial(1,<span class="math inline">\(p\)</span>). We want to test H<span class="math inline">\(_0: p=0.2\)</span> versus H<span class="math inline">\(_a: p=0.5\)</span> with <span class="math inline">\(\alpha=0.35\)</span>. We’ll base our test on <span class="math inline">\(\sum_{i=1}^5 X_i \sim\)</span> Binomial<span class="math inline">\((5,p)\)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(x=0\)</span></th>
+<th><span class="math inline">\(x=1\)</span></th>
+<th><span class="math inline">\(x=2\)</span></th>
+<th><span class="math inline">\(x=3\)</span></th>
+<th><span class="math inline">\(x=4\)</span></th>
+<th><span class="math inline">\(x=5\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(P(\sum X_i = x|p=0.2)\)</span></td>
+<td>0.3277</td>
+<td>0.4096</td>
+<td>0.2048</td>
+<td>0.0512</td>
+<td>0.0064</td>
+<td>0.0003</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P(\sum X_i = x|p=0.5)\)</span></td>
+<td>0.0313</td>
+<td>0.1563</td>
+<td>0.3125</td>
+<td>0.3125</td>
+<td>0.1562</td>
+<td>0.0312</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s consider 2 options for the rejection region.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>When we consider the power-to-level ratio:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(x=0\)</span></th>
+<th><span class="math inline">\(x=1\)</span></th>
+<th><span class="math inline">\(x=2\)</span></th>
+<th><span class="math inline">\(x=3\)</span></th>
+<th><span class="math inline">\(x=4\)</span></th>
+<th><span class="math inline">\(x=5\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(P(\sum X_i = x|p=0.2)\)</span></td>
+<td>0.3277</td>
+<td>0.4096</td>
+<td>0.2048</td>
+<td>0.0512</td>
+<td>0.0064</td>
+<td>0.0003</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P(\sum X_i = x|p=0.5)\)</span></td>
+<td>0.0313</td>
+<td>0.1563</td>
+<td>0.3125</td>
+<td>0.3125</td>
+<td>0.1562</td>
+<td>0.0312</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\frac{P(\sum X_i = x|p=0.5)}{P(\sum X_i = x|p=0.2)}\)</span></td>
+<td>0.0955</td>
+<td>0.3812</td>
+<td>1.5259</td>
+<td>6.1035</td>
+<td>24.406</td>
+<td>104</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<section id="the-neyman-pearson-lemma" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="the-neyman-pearson-lemma"><span class="header-section-number">4.4.1</span> The Neyman-Pearson Lemma</h3>
+<p>This idea of constructing the rejection region by including points that contribute the most power per level is the motivation for the <strong>Neyman-Pearson Lemma</strong>.</p>
+<p><br>
+</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Theorem: Neyman-Pearson Lemma
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider testing H<span class="math inline">\(_0: \theta=\theta_0\)</span> versus H<span class="math inline">\(_a: \theta = \theta_1\)</span>, where <span class="math inline">\((X_1,\dots, X_n) \sim f(x_1,\dots, x_n|\theta)\)</span>. For a constant <span class="math inline">\(k&gt;0\)</span>, let <span class="math display">\[
+\phi(X_1,\dots, X_n) = \left \{ \begin{array}{ll} 1 &amp; f(x_1,\dots,x_n|\theta_1) &gt; k f(x_1,\dots, x_n|\theta_0) \\ 0 &amp; f(x_1,\dots,x_n|\theta_1) &lt; k f(x_1,\dots, x_n|\theta_0) \end{array} \right .
+\]</span> and let <span class="math inline">\(\alpha\)</span> be defined as <span class="math display">\[
+\alpha = P(\phi(X_1,\dots, X_n) = 1 |\theta=\theta_0).
+\]</span> Then, <span class="math inline">\(\phi(X_1,\dots, X_n)\)</span> is most powerful for testing H<span class="math inline">\(_0\)</span> versus H<span class="math inline">\(_a\)</span> at level <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from the exponential<span class="math inline">\((\theta)\)</span> distribution. We want to test H<span class="math inline">\(_0: \theta = \theta_0\)</span> versus H<span class="math inline">\(_a: \theta=\theta_1\)</span> where <span class="math inline">\(\theta_1 &gt; \theta_0\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots, X_n\)</span> be Normal<span class="math inline">\((\mu,\sigma^2)\)</span> random variables where <span class="math inline">\(\sigma^2\)</span> is known. We want to test H<span class="math inline">\(_0: \mu = \mu_0\)</span> versus H<span class="math inline">\(_a: \mu=\mu_1\)</span> where <span class="math inline">\(\mu_1 &gt; \mu_0\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>The test we just derived does not depend on <span class="math inline">\(\mu_1\)</span> The <strong>same</strong> test is most powerful for every <span class="math inline">\(\mu_1 &gt; \mu_0\)</span> (though the power will differ for different values of <span class="math inline">\(\mu_1\)</span>). If a test has this property it is called <strong>uniformly most powerful</strong> (UMP).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Definition: Uniformly Most Powerful (UMP) Tests
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A test is a <strong>uniformly most powerful</strong> (UMP) test of size <span class="math inline">\(\alpha\)</span> if it has size <span class="math inline">\(\alpha\)</span> and if for all parameter values in the alternative spae it has maximum power relative to all rejection regions of size <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+</div>
+<p>In practice, the Neyman-Pearson Lemma may be used to find UMP tests for composite alternative hypotheses by first finding the NP test for a particular simple alternative, and then showing the test does not depend on the specified alternative value.</p>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots, X_n\)</span> be Normal<span class="math inline">\((\mu,\sigma^2)\)</span> random variables where <span class="math inline">\(\sigma^2\)</span> is known. We want to test H<span class="math inline">\(_0: \mu = \mu_0\)</span> versus H<span class="math inline">\(_a: \mu=\mu_1\)</span> where <span class="math inline">\(\mu_1 &gt; \mu_0\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>Like MLEs (and LRTs), the NP Lemma guarantees that most powerful tests (if they exist) will be functions of sufficient statistics. The NP Lemma says the test <span class="math display">\[
+\phi(X_1,\dots,X_n) = \left \{ \begin{array}{ll} 1 &amp; f(x_1,\dots,x_n|\theta_1) &gt; k f(x_1,\dots, x_n|\theta_0) \\ 0 &amp; f(x_1,\dots,x_n|\theta_1) &lt; k f(x_1,\dots, x_n|\theta_0) \end{array} \right .
+\]</span> is most powerful.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+</section>
+<section id="extending-the-neyman-pearson-lemma" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="extending-the-neyman-pearson-lemma"><span class="header-section-number">4.4.2</span> Extending the Neyman-Pearson Lemma</h3>
+<p>We’ve already seen that the Neyman-Pearson Lemma may be used to find UMP tests for composite alternative hypotheses by first finding the most powerful test for a particular alternative and then showing that it does not depend on the specific alternative value. What about composite nulls?</p>
+<p><br>
+</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Theorem: Extending the Neyman-Pearson Lemma
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\phi(X_1,\dots, X_n)\)</span> be a size-<span class="math inline">\(\alpha\)</span> NP test for H<span class="math inline">\(_0:\theta=\theta_0\)</span> versus H<span class="math inline">\(_a: \theta=\theta_1\)</span> (<span class="math inline">\(\theta_1 &gt; \theta_0\)</span>) where E<span class="math inline">\((\phi(X_1,\dots,X_n|\theta_0)=\alpha\)</span>. Suppose the test does not depend on <span class="math inline">\(\theta_1\)</span>.</p>
+<ul>
+<li><p>1<span class="math inline">\(^{st}\)</span> extension: The NP test is uniformly most powerful for testing H<span class="math inline">\(_0: \theta = \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &gt; \theta_0\)</span> (its size is still <span class="math inline">\(\alpha\)</span>).</p></li>
+<li><p>2<span class="math inline">\(^{nd}\)</span> extension: If in addition the power function of NP best test is non-decreasing for all <span class="math inline">\(\theta\)</span>, then the test is UMP size-<span class="math inline">\(\alpha\)</span> for H<span class="math inline">\(_0: \theta \leq \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &gt; \theta_0\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<p><br>
+</p>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots, X_n\)</span> be Normal<span class="math inline">\((\mu,\sigma^2)\)</span> random variables where <span class="math inline">\(\sigma^2\)</span> is known.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from pdf <span class="math inline">\(f(x|\lambda)=\lambda e^{-\lambda x}\)</span> for <span class="math inline">\(x &gt; 0\)</span>. We want to test H<span class="math inline">\(_0: \lambda \leq \lambda_0\)</span> versus H<span class="math inline">\(_a: \lambda &gt; \lambda_0\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>What if we want to test H<span class="math inline">\(_0: \theta \geq \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &lt; \theta_0\)</span>? What needs to change in the extensions?</p>
+<p><br>
+</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Theorem: Extending the Neyman-Pearson Lemma (Less Than)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\phi(X_1,\dots, X_n)\)</span> be a size-<span class="math inline">\(\alpha\)</span> NP test for H<span class="math inline">\(_0:\theta=\theta_0\)</span> versus H<span class="math inline">\(_a: \theta=\theta_1\)</span> (<span class="math inline">\(\theta_1 \hbox{\hspace{8mm}} \theta_0\)</span>) where E<span class="math inline">\((\phi(X_1,\dots,X_n|\theta_0)=\alpha\)</span>. Suppose the test does not depend on <span class="math inline">\(\theta_1\)</span>.</p>
+<ul>
+<li><p>1<span class="math inline">\(^{st}\)</span> extension: The NP test is uniformly most powerful for testing H<span class="math inline">\(_0: \theta = \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &lt; \theta_0\)</span> (its size is still <span class="math inline">\(\alpha\)</span>).</p></li>
+<li><p>2<span class="math inline">\(^{nd}\)</span> extension: If in addition the power function of NP best test is for all <span class="math inline">\(\theta\)</span>, then the test is UMP size-<span class="math inline">\(\alpha\)</span> for H<span class="math inline">\(_0: \theta \geq \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &lt; \theta_0\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<p><br>
+</p>
+<p>If the NP Lemma and its extensions give us a method for finding most powerful tests, why would we ever do anything different? Why even bother with LRTs and others? <strong>UMP tests don’t always exist.</strong></p>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots, X_n\)</span> be Normal<span class="math inline">\((\mu,\sigma^2)\)</span> random variables where <span class="math inline">\(\sigma^2\)</span> is known.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+</section>
+<section id="monotone-likelihood-ratios" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="monotone-likelihood-ratios"><span class="header-section-number">4.4.3</span> Monotone Likelihood Ratios</h3>
+<p>The monotone likelihood ratio is a condition that, when it holds, lets us find UMP tests for 1-sided alternatives without going through the NP Lemma + Extensions process.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Definition: Monotone Likelihood Ratio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A joint pdf/pmf <span class="math inline">\(f(x_1,\dots,x_n|\theta)\)</span> has a <strong>monotone likelihood ratio</strong> (MLR) in the statistic <span class="math inline">\(T=t(X_1,\dots,X_n)\)</span> if, for any two values of the parameter <span class="math inline">\(\theta_2 &gt; \theta_1\)</span>, the ratio <span class="math inline">\(f(x_1,\dots,x_n|\theta_2)/f(x_1,\dots,x_n|\theta_1)\)</span> depends on <span class="math inline">\((x_1,\dots,x_n)\)</span> only through the function <span class="math inline">\(t(x_1,\dots,x_n)\)</span> and this ratio is a non-decreasing function of <span class="math inline">\(t(x_1,\dots,x_n)\)</span>.<br>
+</p>
+<p>Note: if the ratio is non-increasing in <span class="math inline">\(t(x_1,\dots,x_n)\)</span> it can be made non-decreasing.</p>
+</div>
+</div>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots, X_n\)</span> be iid Poisson<span class="math inline">\((\lambda)\)</span> random variables.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Theorem: Karlin-Rubin (Greater than)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider testing H<span class="math inline">\(_0:\theta \leq \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &gt; \theta_1\)</span>. Suppose that <span class="math inline">\(T\)</span> is a sufficient statistic for <span class="math inline">\(\theta\)</span> and the family of pdfs/pmfs of <span class="math inline">\(T\)</span> has an MLR. Then, for any <span class="math inline">\(t_0\)</span>, the test that rejects H<span class="math inline">\(_0\)</span> if and only if <span class="math inline">\(T &gt; t_0\)</span> is a UMP level-<span class="math inline">\(\alpha\)</span> test, where <span class="math inline">\(\alpha = P(T &gt; t_0|\theta_0)\)</span>.</p>
+</div>
+</div>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots, X_n\)</span> be iid Poisson<span class="math inline">\((\lambda)\)</span> random variables. We want to test H<span class="math inline">\(_0: \lambda \leq \lambda_0\)</span> versus H<span class="math inline">\(_a: \lambda &gt; \lambda_0\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from pdf <span class="math inline">\(f(x|\lambda)=\lambda e^{-\lambda x}\)</span> for <span class="math inline">\(x &gt; 0\)</span>. We want to test H<span class="math inline">\(_0: \lambda \leq \lambda_0\)</span> versus H<span class="math inline">\(_a: \lambda &gt; \lambda_0\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>MLRs are another reason to love exponential families.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Theorem: MLRs and Exponential Families
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\((X_1,\dots,X_n)\)</span> has a distribution in the one-parameter exponential family, i.e.&nbsp;has pdf <span class="math display">\[
+f(x|\theta) = c(\theta)h(x)\exp\{w(\theta)t(x)\}
+\]</span> where <span class="math inline">\(w(\cdot)\)</span> is a non-decreasing function, then the distribution of <span class="math inline">\((X_1,\dots,X_n)\)</span> has a MLR in <span class="math inline">\(T(X_1,\dots,X_n)=\sum_{i=1}^n t(x_i)\)</span>.</p>
+</div>
+</div>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots,X_n\)</span> be a random sample from pdf <span class="math inline">\(f(x|\lambda)=\lambda e^{-\lambda x}\)</span> for <span class="math inline">\(x &gt; 0\)</span>.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p><strong>Example</strong>: Let <span class="math inline">\(X_1,\dots, X_n\)</span> be a random sample from the beta distribution with <span class="math inline">\(\alpha\)</span> unknown and <span class="math inline">\(\beta\)</span> known.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>The problem of testing H<span class="math inline">\(_0:\theta \geq \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &lt; \theta_0\)</span> can also be handled by the MLR approach, but the inequalities in the Karlin-Rubin Theorem must be reversed.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Theorem: Karlin-Rubin (Less than)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider testing H<span class="math inline">\(_0:\theta \geq \theta_0\)</span> versus H<span class="math inline">\(_a: \theta &lt; \theta_1\)</span>. Suppose that <span class="math inline">\(T\)</span> is a sufficient statistic for <span class="math inline">\(\theta\)</span> and the family of pdfs/pmfs of <span class="math inline">\(T\)</span> has an MLR. Then, for any <span class="math inline">\(t_0\)</span>, the test that rejects H<span class="math inline">\(_0\)</span> if and only if <span class="math inline">\(T &lt; t_0\)</span> is a UMP level-<span class="math inline">\(\alpha\)</span> test, where <span class="math inline">\(\alpha = P(T &lt; t_0|\theta_0)\)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="p-values" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="p-values"><span class="header-section-number">4.5</span> P-values</h2>
+<p>So far, we’ve been dealing with tests with a pre-specified significance level. That is, our tests have the form <span class="math inline">\(\phi(X_1,\dots,X_n) = \left \{ \begin{array}{ll} 1 &amp; T(X_1,\dots,X_n) &gt; k_{\alpha} \\ 0 &amp; T(X_1,\dots,X_n) \leq k_{\alpha} \end{array}\right.\)</span> where <span class="math inline">\(\alpha=P(T&gt;k_{\alpha}|\hbox{H}_0 \hbox{ true})\)</span>. The numerical value of <span class="math inline">\(\alpha\)</span> is chosen arbitrarily (or by tradition), and different researchers may disagree about what value of <span class="math inline">\(\alpha\)</span> should be used. This can lead to an uncomfortable situation: two researchers come to different conclusions, even with the same set of data. However, if the researchers use the same test statistic, we can overcome this problem by reporting the results in terms of the <strong>p-value</strong> of the test.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Definition: p-value
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(W(X_1,\dots,X_n)\)</span> is a test statistic, the <strong>p-value</strong>, or <strong>attained significance level</strong>, is the smallest level of significance <span class="math inline">\(\alpha\)</span> for which the observed data indicate that the null hypothesis should be rejected. The smaller the p-value, the more compelling is the evidence that the null hypothesis should be rejected.</p>
+</div>
+</div>
+<p><strong>Example</strong>: Let’s go back to the 14th and Superior roundabout example. In that case, our LRT was <span class="math display">\[
+\phi_\alpha(X_1,\dots,X_n) = \left \{ \begin{array}{ll} 1 &amp; W(X_1,\dots,X_n) &gt; k_{\alpha} \\ 0 &amp; W(X_1,\dots,X_n) &lt; k_{\alpha}   \end{array} \right . .
+\]</span> Previously, we set <span class="math inline">\(\alpha=0.05\)</span>. We could have chosen many different signficance levels:</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<p>Notice that as <span class="math inline">\(\alpha\)</span> decreases, the critical value <span class="math inline">\(k_{\alpha}\)</span> increases, making it more difficult to reject the null hypothesis. This makes sense, because we are reducing our chance of making a Type I error. With the data observed, our test statistic was 6.776, and at <span class="math inline">\(\alpha=0.05\)</span>, we rejected the null hypothesis. However, if we had used a different <span class="math inline">\(\alpha\)</span> value, we would have reached a different conclusion.</p>
+<p>To avoid this issue, p-values are often reported so that researchers (or, maybe more importantly, consumers of the research) can reach their own conclusions about the significance of the test results. The p-value of the test is the smallest value of <span class="math inline">\(\alpha\)</span> for which we would reject H<span class="math inline">\(_0\)</span>. That is, it is the smallest value of <span class="math inline">\(\alpha\)</span> for which <span class="math inline">\(\phi(X_1,\dots,X_n) = 1\)</span>. For example, if our p-value=0.024, then 0.024 is the smallest value <span class="math inline">\(\alpha\)</span> could be, and we would still reject H<span class="math inline">\(_0\)</span>. For a test with significance level <span class="math inline">\(\alpha\)</span>, we could re-write the test rule as <span class="math display">\[
+\phi_ \alpha(X_1,\dots,X_n) = \left \{ \begin{array}{ll} 1 &amp; \hbox{p-value} &lt; \alpha \\ 0 &amp; \hbox{p-value} &gt; \alpha \end{array} \right .
+\]</span> P-values are convenient because the end user of the test doesn’t need to look up critical values in a table. Note that smaller p-values indicate greater evidence against H<span class="math inline">\(_0\)</span> and larger p-values indicate lesser evidence against H<span class="math inline">\(_0\)</span>.</p>
+<p>There are two main ways to calculate p-values:</p>
+<ol type="1">
+<li>Reference distribution of the test statistic, <span class="math inline">\(T\)</span>.</li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<ol start="2" type="1">
+<li>Simulation</li>
+</ol>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
 
 
 </section>
