@@ -137,7 +137,7 @@ Any time we construct a hypothesis test, there are two possible errors we can ma
 
 \newpage
 
-**Example**: In the Henry Moore article, each print was evaluated by an expert to determine if the print is fake.
+**Example**: In the Henry Moore example, 15 independent prints for sale on an auction site were evaluated by an expert to determine if the print is fake.
 
 - What are the two hypotheses?
 
@@ -162,7 +162,7 @@ Any time we construct a hypothesis test, there are two possible errors we can ma
 \
 \
 
-Consider a test which **always rejects** H_0. That is, $\phi(X_1,\dots, X_n) = 1$. What happens to the probability of committing each type of error?
+Consider a test which **always rejects** H$_0$. That is, $\phi(X_1,\dots, X_n) = 1$. What happens to the probability of committing each type of error?
 
 \
 \
@@ -170,7 +170,7 @@ Consider a test which **always rejects** H_0. That is, $\phi(X_1,\dots, X_n) = 1
 \
 \
 
-Consider a test which **always fails to reject** H_0. That is, $\phi(X_1,\dots, X_n) = 0$. What happens to the probability of committing each type of error?
+Consider a test which **always fails to reject** H$_0$. That is, $\phi(X_1,\dots, X_n) = 0$. What happens to the probability of committing each type of error?
 
 \
 \
