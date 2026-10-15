@@ -858,7 +858,7 @@ Why does this provide a good rejection region? Let's look at a simple example.
 
 **Example**: Suppose $X_1,\dots, X_5 \sim$ Binomial(1,$p$). We want to test H$_0: p=0.2$ versus H$_a: p=0.5$ with $\alpha=0.35$. We'll base our test on $\sum_{i=1}^5 X_i \sim$ Binomial$(5,p)$.
 
-|                         | $x=0$  | $x=1$  | $x=2$  | $x=3$  | $x=4$  | $x=5$  |
+|                         | $\sum x=0$  | $\sum x=1$  | $\sum x=2$  | $\sum x=3$  | $\sum x=4$  | $\sum x=5$  |
 |-------------------------|--------|--------|--------|--------|--------|--------|
 | $P(\sum X_i = x|p=0.2)$ | 0.3277 | 0.4096 | 0.2048 | 0.0512 | 0.0064 | 0.0003 |
 | $P(\sum X_i = x|p=0.5)$ | 0.0313 | 0.1563 | 0.3125 | 0.3125 | 0.1562 | 0.0312 |
@@ -881,7 +881,7 @@ Let's consider 2 options for the rejection region.
 
 When we consider the power-to-level ratio:
 
-|   | $x=0$ | $x=1$ | $x=2$ | $x=3$ | $x=4$ | $x=5$ |
+|   | $\sum x=0$ | $\sum x=1$ | $\sum x=2$ | $\sum x=3$ | $\sum x=4$ | $\sum x=5$ |
 |-------------------|-----------|-----------|-----------|-----------|-----------|-----------|
 | $P(\sum X_i = x|p=0.2)$ | 0.3277 | 0.4096 | 0.2048 | 0.0512 | 0.0064 | 0.0003 |
 | $P(\sum X_i = x|p=0.5)$ | 0.0313 | 0.1563 | 0.3125 | 0.3125 | 0.1562 | 0.0312 |
