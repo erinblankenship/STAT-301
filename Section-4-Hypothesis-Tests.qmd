@@ -801,7 +801,7 @@ Under some "regularity" conditions on the distribution of the data, the large sa
 
 If $X_1,\dots, X_n$ are iid with pdf/pmf $f(x;\theta)$ and $\lambda(x_1,\dots,x_n)$ is the likelihood ratio test statistic for testing H$_0: \theta \in \Theta_0$ versus H$_a: \theta \in \Theta_a$, then under regularity conditions on $f(x;\theta)$ under H$_0$, as $n \rightarrow \infty$: $$
 -2\ln[\lambda(\mathbf{x})] \xrightarrow{D} \chi^2_{k}
-$$ where \$k = \$\[# free parameters for $\theta \in \Theta$\] - \[# free parameters for $\theta \in \Theta_0$\]. This yields the test with (approximate) significance level $\alpha$: $$
+$$ where $k$ = [# free parameters for $\theta \in \Theta$] - [# free parameters for $\theta \in \Theta_0$]. This yields the test with (approximate) significance level $\alpha$: $$
 \phi(X_1,\dots, X_n) = \left \{ \begin{array}{ll} 1 & -2\ln[\lambda(\mathbf{x})] > \chi^2_{k,\alpha} \\ 0 & \hbox{elsewhere} \end{array} \right .
 $$
 :::
