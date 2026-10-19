@@ -1,0 +1,54 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Homework 6
+
+Due Wednesday, 28 October 2026
+
+1.   Let $X_1,\dots, X_n$ be iid random variables from the distribution with pdf
+$$
+f(x;\theta) = \left \{ \begin{array}{ll} \theta(1+x)^{-(1+\theta)} & x > 0 \\ 0 & \hbox{elsewhere} \end{array} \right .
+$$
+for $\theta > 0$.  Find the UMVUE for $1/\theta$, and explain why it is the UMVUE. (Hint: you will probably need to do a transformation somewhere in your solution.)
+
+2. Let $X_1, \dots, X_n$ be iid from the distribution with pdf
+$$
+f(x|\theta) = \left \{ \begin{array}{ll} \frac{2x}{\theta^2} & 0 < x < \theta \\ 0 & \hbox{elsewhere} \end{array} \right .
+$$
+where $\theta > 0$.  It turns out that $X_{(n)}$ is the complete sufficient statistic for $\theta$. Find the UMVUE for $\theta$. Explain why it is the UMVUE. 
+
+3. We are interested in estimating the average number of tattoos that UNL students have.  We randomly select 76 UNL students, and ask them how many tattoos they have. The total number of tattoos among these 76 students is 21. 
+   a. Explain why this scenario can be modeled using a Poisson distribution. Your explanation should also include **in words** what $n$, $X_1,\dots, X_n$, $\lambda$, and $x_1,\dots, x_n$ are in this situation, and, if applicable, give the numerical values of each.
+
+   b.  Find the UMVU-Estimator (UMVUE) and UMVU-Estimate for $\lambda$.  Show and explain **ALL WORK**.
+  
+   c.  We are also interested in estimating $\lambda e^{-\lambda}$.
+
+       i. **In words**, what probability can we represent using $\lambda e^{-\lambda}$?
+
+       ii.  Find the UMVUE for $\lambda e^{-\lambda}$, well as the UMVU-Estimate for $\lambda e^{-\lambda}$. Show and explain all work.
+
+4.  Let $X_1,\dots, X_n$ be iid Geometric$(p)$ random variables.
+
+    a. Find the UMVUE of $p(1-p)$. Be sure to show all work and thoroughly explain why it is the UMVUE.
+    
+    b.  Find the UMVUE of $p^2$. Be sure to show all work and thoroughly explain why it is the UMVUE.
+
+
+
+
+

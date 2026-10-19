@@ -1,0 +1,94 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Final Project
+
+Throughout this semester, we've been starting with a sample of random variables $X_1,\dots, X_n$ drawn from a population with a known distribution but unknown values for the parameters. We've focused on estimating those unknown parameters, based on the sample drawn. This is actually pretty unrealistic. Typically, we are presented with a set of data and tasked with answering a research question. For example, consider the following data set. Students were asked how much time (in hours) they spent playing video games in the prior week, and we'd like to make a general statement about how much time all US teenagers spend playing games based on these sample data (taken from Nolan and Speed, 2000).
+
+| Time  | Count |
+|-------|-------|
+| 0     | 57    |
+| 0.1   | 1     |
+| 0.5   | 5     |
+| 1     | 5     |
+| 1.5   | 1     |
+| 2     | 14    |
+| 3     | 3     |
+| 4     | 1     |
+| 5     | 1     |
+| 14    | 2     |
+| 30    | 1     |
+| Total | 91    |
+
+Because time playing video games is a continuous, nonnegative random variable, it would seem that an exponential distribution would be a reasonable model for these data. However, the recorded time was grouped into categories, and is therefore a discrete random variable. In addition, over half of the values are zero. Therefore, assuming that recorded time follows an exponential distribution is not reasonable, and we cannot use the parameter from the exponential distribution to characterize the underlying population.
+
+If we want to construct an estimator to answer our research question, we cannot use the method of moments or maximum likelihood because we don't have a pdf. We might think the sample mean would still be a good estimator, but we can't declare it a UMVUE, again because we don't have a pdf to start from. We can, however, take a different approach to examine the behavior, or "goodness" of an estimator. One method we could use is the bootstrap, which you used a lot in STAT 102. As a reminder, the idea behind the bootstrap is pretty simple. We don't know the distribution of the underlying population, which means we don't know the distribution of any candidate statistics we'd like to use. So, for example, because we don't know the underlying distribution of video game times, we don't know the distribution of statistics like $\bar{X}$ or the sample median. However, we could estimate the distribution of statistics just like we estimate parameters using the data set we observed. The general procedure for the bootstrap is as follows:
+
+1.  Create many data sets, each the same size as the original data set, called resamples. These resamples are collected by sampling with replacement from the data.
+
+2.  Calculate the statistic of interest for each resample. The distribution of the resample statistics is called a bootstrap distribution, and is an estimate of the true underlying sampling distribution of the statistic.
+
+This resulting bootstrap distribution could be used just as we would use any other sampling distribution--to assess bias, the variability of the statistic, etc.
+
+![](VideoTimeDataDistribution.pdf){fig-align="left" width="350" height="200"} ![](VideoTimeBootStrapDistribution.pdf){fig-align="right" width="350" height="200"}
+
+From the bootstrap distribution of the sample mean, we see that estimated sampling distribution is skewed to the right and that a typical estimate falls within about 0.25 hours (15 minutes) of the center of the distribution. We can quantify these conclusions by looking at the three quartiles of the bootstrap distribution (Q1=0.96 hours, median=1.21 hours, and Q3=1.49 hours). Not surprisingly, the estimated bias of the sample mean (1.247-1.243=0.004 hours) is very close to zero.
+
+Now, it's your turn. For this project, your group should:
+
+1.  Identify an **existing** data set you would like to explore. Good sources for data include websites like \url{https://kaggle.com}, \url{https://catalog.data.gov}, and \url{https://github.com/fivethirtyeight/data}.
+
+    a.  Provide a full description of the data set, including a reference for where you found it.
+    b.  Identify the population from which the sample was drawn.
+    c.  Identify the **single** random variable you will be using from your data set.
+
+2.  The data set you pick must not be reasonably modeled by one of the distributions we've discussed in class.
+
+    a.  Identify the distribution you believe may be a feasible model for your data set, based on the properties of the distribution.
+    b.  Explain why this distribution seems like it should be plausible.
+    c.  Further explain the distributional assumptions your data set violates that make the distribution an invalid choice.
+
+3.  For the data set you chose, you must identify at least one research question that could be answered using the data. Your research question(s) must reference **an underlying characteristic of the population from which the data set was sampled**. That is, you are trying to answer questions about something beyond your data set. You should make sure to explain why the research question(s) would be of interest to someone other than your group.
+
+    a.  What is your research question(s)?
+    b.  What underlying characteristic does your research question(s) reference?
+    c.  Explain why the research question(s) would be of interest to someone other than your group.
+
+4.  Devise at least two estimators which could be used to estimate the underlying characteristic you identified for the population. These estimators must be something other than those we've seen in class (e.g., no means, medians, variances, standard deviations, minima, maxima, etc.). Please provide an explanation of why these estimators would make sense for the underlying characteristic. Keep in mind that these estimators should be aimed at the **same research question** (for example, mean and variance measure different things and are attempting to answer fundamentally different questions).
+
+    a.  Identify at least two estimators.
+    b.  Explain why these estimators would make sense for the underlying characteristic you identified in 3(b).
+
+5.  Based on your data set, provide estimates using the estimators you proposed.
+
+6.  Use bootstrap methods to explore the empirical sampling distributions of the proposed estimators. Make sure to compare the estimators. Please note that both graphical summaries and quantitative comparisons must be included, along with your discussion.
+
+    a.  Provide both graphical summaries and quantitative comparisons of your estimators.
+    b.  Based on your graphical summaries and quantitative comparisons compare your two estimators.
+
+7.  Using the proposed estimator that you determine to be best, answer the research question(s).
+
+Please write up your project in a way that seamlessly transitions from one question to the next. That is, we should be able to identify the question to which are responding, but a reader of your write-up who had not seen the question list would not know what the questions are. That is, it should read more like an essay than a list of question responses.
+
+Oral presentations of the projects will be presented in class on Friday, December 11. Presentations should not attempt to explain all aspects of the project, but instead highlight the features that the group feels are most interesting/unique to their data set. Final drafts of the written project are due in Canvas by 9:00 am on Monday, December 14.
+
+**Grading** (60 total points):
+
+- All of the questions listed above are answered thoroughly. (30 points)
+- A full reference for the data set is provided, and the data set and code are included at the end of the paper as an appendix. Any outside references are appropriately cited. (5 points)
+- The paper "makes sense and hangs together"; it is thorough, well-organized, and clearly written, with no run-on sentences, sentence fragments, or other grammatical errors. The paper is carefully proofread, so there are no spelling or punctuation errors, and uses double spacing. (15 points)
+- Presentation makes use of appropriate visual aids, highlights the unique features of the project, is clear, and well-organized. (10 points)
