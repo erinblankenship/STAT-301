@@ -1,0 +1,110 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Homework 8
+
+Due Wednesday, 11 November 2026
+
+1.  The time in minutes  between the last boarding call and take-off for flights offered by a particular airline flying from Lincoln to Denver is a random variable $X$ with pdf $f(x;\theta) = e^{-x+\theta}$ for $x > \theta$ and with CDF $F(x;\theta) = 1-e^{-x+\theta}$ for $x > \theta$. For this distribution, $\theta$ represents the amount of time that must be allocated for the last passengers to board, be seated, and safety announcements made. Assume you have a random sample, $X_1,\dots, X_n$, from this distribution.
+
+    a. Prove that the pdf of the smallest order statistic, $X_{(1)}$ is $f_{X_(1)}(x)=n e^{-xn+\theta n}$ for $x > \theta$ (and 0 otherwise).
+    
+    b. Currently, 15 minutes are allocated for the last passengers to board, be seated, and safety announcements made. The flight attendant union believes that not enough time is allocated, and that an unrealistic value of $\theta$ is currently being used to determine take-off times. They plan to collect data on 10 randomly selected Lincoln to Denver flights in support of their claim. What hypotheses (in symbols and numbers) is the union interested in testing?
+    
+    c. In the context of this scenario, explain what a Type I error would mean to the flight attendant union **and** to the owners of the airline.
+    
+    d. The union proposes using the following test function:
+\begin{eqnarray*}
+\phi(X_1,\dots, X_n) = \left \{ \begin{array}{ll} 1 & X_{(1)} > 15.121 \\ 0 & \hbox{elsewhere} \end{array} \right .
+\end{eqnarray*}
+Find the probability of a Type I error, assuming the null hypothesis is true.
+
+    e. Based on your responses in (c) and (d), do you think the owners and the union would agree on this test function? Explain your answer.
+    
+
+2. The Pew Research Center (2013) estimates that 36% of all US adults aged 18-25 have at least 1 tattoo.  We suspect that the proportion of UNL students that have at least one tattoo is less than the national value. We decide to test the hypotheses H$_0: p = 0.36$ versus H$_a: p < 0.36$. Let the random variable $\sum_{i=1}^{76} Y_i$ denote the total number (out of the 76 randomly selected UNL students) that have at least 1 tattoo. 
+
+    a. Suppose the following two hypothesis test functions $\phi_1(Y_1,\dots,Y_{76})$ and $\phi_2(Y_1,\dots, Y_{76})$ are considered:
+$$
+\phi_1(Y_1,\dots, Y_{76}) = \left \{ \begin{array}{ll} 1 & \sum_{i=1}^{76} Y_i > c \\ 0 & \hbox{elsewhere} \end{array} \right . \hbox{\hspace{10mm}} \phi_2(Y_1,\dots, Y_{76}) = \left \{ \begin{array}{ll} 1 & \sum_{i=1}^{76} Y_i < k \\ 0 & \hbox{elsewhere} \end{array} \right .
+$$
+where $c$ and $k$ are critical values chosen for a given significance level, $\alpha$.  Explain why, intuitively, we should use the second test function, $\phi_2(Y_1,\dots,Y_{76}),$ to test the claim, rather than $\phi_1(Y_1,\dots, Y_{76})$.
+
+   b. Three critical values (20, 25, 30) are proposed for the test function given in (a):
+$$
+\phi_A(\mathbf{Y}) = \left \{ \begin{array}{ll} 1 & \sum_{i=1}^{76} Y_i < 20 \\ 0 & \hbox{elsewhere} \end{array} \right . \hbox{\hspace{5mm}} \phi_B(\mathbf{Y}) = \left \{ \begin{array}{ll} 1 & \sum_{i=1}^{76} Y_i < 25 \\ 0 & \hbox{elsewhere} \end{array} \right . \hbox{\hspace{5mm}} \phi_C(\mathbf{Y}) = \left \{ \begin{array}{ll} 1 & \sum_{i=1}^{76} Y_i < 30 \\ 0 & \hbox{elsewhere} \end{array} \right .
+$$
+      i. Which of these hypothesis test functions always has the **smallest** probability of making a Type I error for testing the hypotheses given above? Thoroughly explain your rationale **in words** (Note: Calculated probabilities are not considered valid rationale.)
+      ii. Which of these hypothesis test functions always has the **largest** power for testing the hypotheses given above? Thoroughly explain your rationale **in words** (Note: Calculated probabilities are not considered valid rationale.)
+      iii. Of the three critical values proposed (20, 25 and 30), which value would you choose for this test? Explain your reasoning.
+      
+3. The time in minutes between the last boarding call and take-off for flights offered by a particular airline flying from Chicago to Denver is a random variable $X$ with pdf and CDF
+$$
+f_X(x) = \left \{ \begin{array}{ll} \frac{1}{10} e^{-(x-\beta)/10} & x \geq \beta \\ 0 & \hbox{elsewhere} \end{array} \right . \hbox{\hspace{3mm} and \hspace{3mm}} F_X(x) = \left \{ \begin{array}{ll} 1 - e^{-(x-\beta)/10} & x \geq \beta \\ 0 & \hbox{elsewhere} \end{array} \right ..
+$$
+For this distribution, $\beta$ represents the shortest amount of time it takes for passengers to board, be seated, and safety announcements made. Assume you have a random sample, $X_1,\dots, X_n$, from this distribution. 
+
+   a. Find the maximum likelihood estimator for $\beta$. Be sure to show/explain all work.
+   b. The flight attendant union believes that not enough time is allocated, and that an unrealistic value of $\beta$ is currently being used to determine take-off times. They are interested in the likelihood ratio test (LRT) for testing H$_0: \beta=\beta_0$ versus H$_a: \beta > \beta_0$. Provide the restricted and unrestricted MLEs required for the test.
+   c. Derive the likelihood ratio test (LRT) for testing H$_0: \beta=\beta_0$ versus H$_a: \beta > \beta_0$.  Be sure to show all work and determine the **exact** critical value required for $\alpha=0.05$. 
+   d. Take-off times are determined based on ($\beta + 10)$, which is the average time required for the last passengers to board, be seated, and safety announcements made. Currently, a value of $\beta=15$ is used. The union collects data on 20 randomly selected Chicago to Denver flights, and observes the following values for $x_1,\dots, x_{20}$:
+$$
+\begin{array}{cccccccccccccccccccc}
+22 & 23 & 19 & 23 & 27 & 24 & 30 & 45 & 33 & 37 & 52 & 18 & 28 & 23 & 26 & 18 & 28 & 28 & 29 & 32
+\end{array}
+$$
+State the hypotheses of interest and carry out the test you derived in (c). What can you conclude?
+
+   e. Based on your knowledge from previous STAT classes, calculate the p-value of the test, based on the data provided above.
+   
+\newpage   
+   
+4. Let $X_1, \ldots, X_n$ be a random sample of the total time (from start to finish, in minutes, including non-playing time) of $n$ basketball games in the men's NCAA tournament. Suppose the pdf of $X$ is
+$$
+f(x;\theta) = \left \{ \begin{array}{ll} \frac{1}{\theta} e^{-(x-40)/\theta} & x > 40 \\ 0 & \hbox{elsewhere} \end{array} \right .
+$$
+   a. Show that the average total game time is $\theta+40.$
+
+   b. Find the MLE of $\theta$. 
+
+   c. Find the UMVUE of $\theta$.
+
+   d. The following two estimators are both unbiased estimators of the chance that the total game time will be greater than two hours ($\tau(\theta)=e^{-80/\theta}$),
+\begin{displaymath}
+\hat \tau_1=\frac{\sum^{n}_{i=1} I(X_i>120)}{n}\quad\quad\quad
+\hat\tau_2=\left\{
+{
+\begin{array}{cc}
+\left(
+1-\frac{80}{\sum_{i=1}^n (X_i-40)}
+\right)^{-n} & \sum_{i=1}^n (X_i-40) > 80\\
+0&\hbox{otherwise.}
+\end{array}
+}
+\right.
+\end{displaymath}
+Which of these two estimators will have the smallest variance? Explain how you know.
+
+    e.  Television networks have traditionally allocated 2 hours of airtime for each NCAA basketball game, whether the game is during the regular season or during the tournament. In the past couple of years, several news outlets (Five Thirty Eight and USA Today, for example) have published articles complaining that NCAA tournament games have gotten too long, due to endless commercials. You decide to test the claims of these articles. What hypotheses (in symbols and numbers) would test of the claims of the articles?
+
+
+    f.  In the context of the scenario, explain what a Type I error would mean to the **television network**.
+
+    g. In the context of the scenario, explain what a Type II error would mean to the **television network**.
+
+
+

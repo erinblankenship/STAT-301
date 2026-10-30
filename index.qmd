@@ -40,29 +40,34 @@ STAT 301 is an introduction to the theory underlying statistical inference. By t
   file.copy("hw4.html","docs/")
   file.copy("hw4.pdf","docs/")
   file.copy("hw4_files","docs/",recursive=TRUE)
-  
+
   quarto::quarto_render(input="hw5.qmd")
   file.copy("hw5.html","docs/")
   file.copy("hw5.pdf","docs/")
   file.copy("hw5_files","docs/",recursive=TRUE)
-  
+
   quarto::quarto_render(input="pp1.qmd")
   file.copy("pp1.html","docs/")
   file.copy("pp1.pdf","docs/")
   file.copy("pp1_files","docs/",recursive=TRUE)
-  
+
   quarto::quarto_render(input="hw6.qmd")
   file.copy("hw6.html","docs/")
   file.copy("hw6.pdf","docs/")
   file.copy("hw6_files","docs/",recursive=TRUE)
-  
+
   quarto::quarto_render(input="project.qmd")
   file.copy("project.html","docs/")
   file.copy("project.pdf","docs/")
   file.copy("project_files","docs/",recursive=TRUE)
-  
+
   quarto::quarto_render(input="hw7.qmd")
   file.copy("hw7.html","docs/")
   file.copy("hw7.pdf","docs/")
   file.copy("hw7_files","docs/",recursive=TRUE)
+  
+  quarto::quarto_render(input="hw8.qmd")
+  file.copy("hw8.html","docs/")
+  file.copy("hw8.pdf","docs/")
+  file.copy("hw8_files","docs/",recursive=TRUE)
   ```
