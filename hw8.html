@@ -134,12 +134,25 @@ f(x;\theta) = \left \{ \begin{array}{ll} \frac{1}{\theta} e^{-(x-40)/\theta} &am
 <li><p>Show that the average total game time is <span class="math inline">\(\theta+40.\)</span></p></li>
 <li><p>Find the MLE of <span class="math inline">\(\theta\)</span>.</p></li>
 <li><p>Find the UMVUE of <span class="math inline">\(\theta\)</span>.</p></li>
-<li><p>The following two estimators are both unbiased estimators of the chance that the total game time will be greater than two hours (<span class="math inline">\(\tau(\theta)=e^{-80/\theta}\)</span>), Which of these two estimators will have the smallest variance? Explain how you know.</p></li>
-<li><p>Television networks have traditionally allocated 2 hours of airtime for each NCAA basketball game, whether the game is during the regular season or during the tournament. In the past couple of years, several news outlets (Five Thirty Eight and USA Today, for example) have published articles complaining that NCAA tournament games have gotten too long, due to endless commercials. You decide to test the claims of these articles. What hypotheses (in symbols and numbers) would test of the claims of the articles?</p></li>
-<li><p>In the context of the scenario, explain what a Type I error would mean to the <strong>television network</strong>.</p></li>
-<li><p>In the context of the scenario, explain what a Type II error would mean to the <strong>television network</strong>.</p></li>
+<li><p>The following two estimators are both unbiased estimators of the chance that the total game time will be greater than two hours (<span class="math inline">\(\tau(\theta)=e^{-80/\theta}\)</span>). Which of these two estimators will have the smallest variance? Explain how you know.</p></li>
 </ol></li>
 </ol>
+<p><span class="math display">\[
+\hat \tau_1=\frac{\sum^{n}_{i=1} I(X_i&gt;120)}{n} \hbox{\hspace{10mm}} \hat\tau_2=\left\{
+\begin{array}{cc}
+\left(
+1-\frac{80}{\sum_{i=1}^n (X_i-40)}
+\right)^{-n} &amp; \sum_{i=1}^n (X_i-40) &gt; 80\\
+0&amp;\hbox{otherwise.}
+\end{array}
+\right.
+\]</span></p>
+<pre><code>e.  Television networks have traditionally allocated 2 hours of airtime for each NCAA basketball game, whether the game is during the regular season or during the tournament. In the past couple of years, several news outlets (Five Thirty Eight and USA Today, for example) have published articles complaining that NCAA tournament games have gotten too long, due to endless commercials. You decide to test the claims of these articles. What hypotheses (in symbols and numbers) would test of the claims of the articles?
+
+
+f.  In the context of the scenario, explain what a Type I error would mean to the **television network**.
+
+g. In the context of the scenario, explain what a Type II error would mean to the **television network**.</code></pre>
 </section>
 
 </main>

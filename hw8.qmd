@@ -83,22 +83,19 @@ $$
 
    c. Find the UMVUE of $\theta$.
 
-   d. The following two estimators are both unbiased estimators of the chance that the total game time will be greater than two hours ($\tau(\theta)=e^{-80/\theta}$),
-\begin{displaymath}
-\hat \tau_1=\frac{\sum^{n}_{i=1} I(X_i>120)}{n}\quad\quad\quad
-\hat\tau_2=\left\{
-{
+   d. The following two estimators are both unbiased estimators of the chance that the total game time will be greater than two hours ($\tau(\theta)=e^{-80/\theta}$).  Which of these two estimators will have the smallest variance? Explain how you know.
+   
+$$
+\hat \tau_1=\frac{\sum^{n}_{i=1} I(X_i>120)}{n} \hbox{\hspace{10mm}} \hat\tau_2=\left\{
 \begin{array}{cc}
 \left(
 1-\frac{80}{\sum_{i=1}^n (X_i-40)}
 \right)^{-n} & \sum_{i=1}^n (X_i-40) > 80\\
 0&\hbox{otherwise.}
 \end{array}
-}
 \right.
-\end{displaymath}
-Which of these two estimators will have the smallest variance? Explain how you know.
-
+$$ 
+     
     e.  Television networks have traditionally allocated 2 hours of airtime for each NCAA basketball game, whether the game is during the regular season or during the tournament. In the past couple of years, several news outlets (Five Thirty Eight and USA Today, for example) have published articles complaining that NCAA tournament games have gotten too long, due to endless commercials. You decide to test the claims of these articles. What hypotheses (in symbols and numbers) would test of the claims of the articles?
 
 

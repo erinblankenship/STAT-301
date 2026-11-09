@@ -70,4 +70,9 @@ STAT 301 is an introduction to the theory underlying statistical inference. By t
   file.copy("hw8.html","docs/")
   file.copy("hw8.pdf","docs/")
   file.copy("hw8_files","docs/",recursive=TRUE)
+  
+  quarto::quarto_render(input="pp2.qmd")
+  file.copy("pp2.html","docs/")
+  file.copy("pp2.pdf","docs/")
+  file.copy("pp2_files","docs/",recursive=TRUE)
   ```

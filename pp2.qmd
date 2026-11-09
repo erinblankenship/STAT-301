@@ -1,0 +1,50 @@
+---
+project:
+  output-dir: docs
+  
+format: 
+  html: default
+  pdf:   
+    header-includes:
+        - \usepackage{float}
+        - \floatplacement{table}{H}  
+    fontsize: 11pt
+    geometry: 
+      - top=20mm
+      - left=15mm
+      - right=10mm
+---
+
+# Practice Problems 2
+
+Not to be turned in, but may be helpful before the exam
+
+1.  Let $X_1,\dots, X_n$ be iid N$(0,\sigma^2)$.
+    a. Derive the size-$\alpha$ UMP test of H$_0: \sigma^2 = \sigma_0^2$ versus H$_a: \sigma^2 > \sigma_0^2$. Be sure to determine $k$.
+    b. Is the test you derived in (a) UMP size-$\alpha$ for H$_0: \sigma^2 \leq \sigma_0^2$ versus H$_a: \sigma^2 > \sigma_0^2$? Justify your answer.
+    c. Give the power function for this test. You may leave the power function in terms of a CDF.
+    
+2. Let $X_1, \dots, X_n$ be iid from the distribution with pdf $$
+    f(x|\theta) = \left \{ \begin{array}{ll} \frac{2x}{\theta^2} & 0 < x < \theta \\ 0 & \hbox{elsewhere} \end{array} \right .
+    $$ where $\theta > 0$. It turns out that $X_{(n)}$ is the complete sufficient statistic for $\theta$. On Homework 6, you found the UMVUE for $\theta$. Consider testing H$_0: \theta \geq \theta_0$ versus H$_a: \theta < \theta_0$. Derive the likelihood ratio test for testing these hypotheses. You do not need to find the critical value.
+    
+3. Let $X$ be a single observation from the pdf 
+$$
+f_X(x|\theta) = 1 + \theta^2 \left ( \frac{1}{2} - x \right )
+$$ 
+for $0 < x < 1$, $-1 \leq \theta \leq 1$.
+
+   a. Derive the most powerful test size-$\alpha$ test for testing H$_0: \theta=0$ versus H$_a: \theta = \theta_1$ ($\theta_1 \neq 0$).
+   b. Find the power function for the test in (a).
+   c. Is the test in (a) UMP for testing H$_0: \theta=0$ versus H$_a: \theta \neq 0$? Explain carefully why or why not.
+   
+4. Let $X_1,\dots, X_n$ be a random sample from the distribution with pdf and CDF
+$$
+f_X(x|\theta) = \left \{ \begin{array}{ll} \frac{\theta}{x^2} & x \geq \theta \\ 0 & \hbox{else} \end{array} \right . \hbox{\hspace{5mm}} F_X(x|\theta) = \left \{ \begin{array}{ll} 0 & x < \theta \\ 1- \frac{\theta}{x} & x \geq \theta  \end{array} \right .
+$$
+Note that the MLE of $\theta$ is $X_{(1)}$. Derive the size-$\alpha$ likelihood ratio test for testing H$_0: \theta=\theta_0$ versus H$_a: \theta \neq \theta_0$. Be sure to determine $k$.
+
+5. Suppose you buy a bag of Skittles and count the number of green candies. The Skittles company asserts that the Skittles colors in each proportions (i.e., the proportion of each of the five colors is 0.20). You are interested in testing H$_0: p_{\hbox{\tiny{GREEN}}} = 0.2$ versus H$_0: p_{\hbox{\tiny{GREEN}}} > 0.2$.
+   a. Derive a level-$0.05$ LRT for the hypotheses above. Use the large sample approximation for the LRT to find the critical value of the test. [Note: on the exam, students were provided with a paper $\chi^2$ table.]
+   b. Suppose your bag of Skittles had 54 candies, 17 of which were green. Carry out the test in (a). What is your conclusion?
+   
